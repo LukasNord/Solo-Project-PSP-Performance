@@ -24,16 +24,20 @@ router.post('/register', (req, res, next) => {
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
 
+  //By default, user registrations will be set to 2 which represents the user security type in the sql table.
   var saveUser = {
     username: req.body.username,
-    password: encryptLib.encryptPassword(req.body.password)
+    password: encryptLib.encryptPassword(req.body.password),
+    user_type: 2
   };
   console.log('new user:', saveUser);
-  pool.query('INSERT INTO users (username, password) VALUES ($1, $2) RETURNING id',
-    [saveUser.username, saveUser.password], (err, result) => {
+  pool.query('INSERT INTO users (username, password, user_type) VALUES ($1, $2, $3) RETURNING id',
+    [saveUser.username, saveUser.password, saveUser.user_type], (err, result) => {
       if (err) {
-        console.log("Error inserting data: ", err);
-        res.sendStatus(500);
+        console.log('error registering user: ', err);
+        //most common error will be a 409- if it's not a 409 then the above log will help debug.
+        res.sendStatus(409);
+        
       } else {
         res.sendStatus(201);
       }

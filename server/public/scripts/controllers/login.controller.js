@@ -7,6 +7,8 @@ myApp.controller('LoginController', ['$http', '$location', 'UserService', functi
     };
     self.message = '';
 
+/** User Login Logic - move to service eventually **/
+
     self.login = function () {
       if (self.user.username === '' || self.user.password === '') {
         self.message = "Enter your username and password!";
@@ -29,7 +31,7 @@ myApp.controller('LoginController', ['$http', '$location', 'UserService', functi
           });
       }
     };
-
+/* Register User Logic */ //Move to Service eventually.
     self.registerUser = function () {
       if (self.user.username === '' || self.user.password === '') {
         self.message = "Choose a username and password!";
@@ -40,8 +42,16 @@ myApp.controller('LoginController', ['$http', '$location', 'UserService', functi
           $location.path('/home');
         },
           function (response) {
-            console.log('error');
-            self.message = "Something went wrong. Please try again."
+            console.log('duplicate username in database');
+            console.log('response: ', response.status);
+            if( response.status === 409){
+              self.message = "This Username is already taken, please try another one."
+            }else if(response.status === 500){
+              self.message = "Something went wrong, please try again.  If the issues persists please notify the administrator of the site."
+            }
+
+            
+            
           });
       }
     }
