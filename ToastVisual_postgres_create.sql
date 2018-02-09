@@ -100,3 +100,5 @@ ALTER TABLE "public_event" ADD CONSTRAINT "public_event_fk7" FOREIGN KEY ("meeti
 
 
 
+INSERT INTO roles(role_name)
+VALUES('grammarian'),('timer'),('counter'),('speech_evaluator'),('general_evaluator'),('icebreaker'),('table_topics_presenter'),('meeting_mc');
