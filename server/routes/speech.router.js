@@ -14,6 +14,25 @@ var isAuthenticated = function (req, res, next) {
   }
 
 
+
+
+/** GET single speech **/
+
+router.get('/singleSpeech/:id', isAuthenticated, (req,res)=>{
+    const speechId = req.params.id;
+    const getSingleSpeechQuery = `SELECT * FROM user_speeches WHERE user_speeches.id = $1`;
+    pool.query(getSingleSpeechQuery, [speechId])
+        .then((result)=>{
+            console.log('success getting single speech: ', result.rows);
+            res.send(result.rows);
+        }).catch((err)=>{
+            console.log('failed to get single speech');          
+        });
+}); //end get single speech
+
+
+
+
   /** Get All User Speeches**/
 router.get('/getUserSpeeches',isAuthenticated, (req,res)=>{
 

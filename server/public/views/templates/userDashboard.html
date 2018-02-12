@@ -8,9 +8,9 @@
         <h3>ngTable directive</h3>
         <table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped" >
             <tr ng-repeat="speech in vm.userSpeeches.list">
-            <td data-title="'Date'">{{speech.date}}</td>
+            <td data-title="'Date'">{{speech.date | date}}</td>
             <td data-title="'Topic'" >{{speech.topic}}</td>
-            <td><md-button class="btn-danger">Test</md-button></td>
+            <td><md-button class="btn-danger" ng-click="vm.editSpeech(speech)">Edit</md-button></td>
             </tr>
         </table>
     </div>

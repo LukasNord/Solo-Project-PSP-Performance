@@ -4,28 +4,67 @@ myApp.controller('UserController', ['UserService','NgTableParams','$mdDialog','S
   self.userService = UserService;
   self.userObject = UserService.userObject;
   self.userSpeeches = SpeechService.speechArray;
+  self.getUserSpeeches = SpeechService.getUserSpeeches;
+  
+ 
   
 
-  
 
-  self.getUserSpeeches = function(){
-    SpeechService.getUserSpeeches();
+/** Edit Speech **/
+
+self.editSpeech = function(speechObject){
+   self.speechTest = [];
+   self.speechTest.push(speechObject);
+  console.log('single speech: ', self.speechTest);
+  
+  self.showEditSpeechModal = function (ev) {
+    $mdDialog.show({
+        controller: EditDialogController,
+        controllerAs: 'vm',
+        templateUrl: '../views/partials/editSpeech.partial.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose: true
+        
+      })
+      .then(function (answer) {
+        self.addSpeech(answer);
+      }, function () {
+        self.status = 'You cancelled the dialog.';
+      });
+  };
+
+  function EditDialogController($mdDialog) {
+    const self = this;
+    self.hide = function () {
+      $mdDialog.hide();
+    };
+
+    self.cancel = function () {
+      $mdDialog.cancel();
+    };
+
+    self.answer = function (answer) {
+      console.log('answer', answer);
+
+      $mdDialog.hide(answer);
+    };
   }
+  
+  
+  self.showEditSpeechModal();
+}
+
+
+
+
+
+
+
+
+/** Get Speeches  **/
+  
   self.getUserSpeeches();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   /* Add Speech */
   self.newSpeech = {};
@@ -33,8 +72,6 @@ myApp.controller('UserController', ['UserService','NgTableParams','$mdDialog','S
   self.addSpeech = function(newSpeech){
     console.log('addspeech clicked');
     SpeechService.addSpeech(newSpeech);
-    
-
   }
     
 /** Add Speech Modal **/
@@ -70,6 +107,10 @@ myApp.controller('UserController', ['UserService','NgTableParams','$mdDialog','S
 
       $mdDialog.hide(answer);
     };
+
+    /** Edit Speech Modal **/
+
+   
 
     
 

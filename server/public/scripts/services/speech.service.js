@@ -20,12 +20,7 @@ myApp.service('SpeechService', ['$http', '$location', function($http, $location)
 
     }// end add speech
 
-
-
-
-    /**Get User Speeches **/
-
-
+    /**Get All User Speeches **/
     self.getUserSpeeches = function(){
         console.log('in getUserSpeeches Service');
         $http.get('/api/speech/getUserSpeeches')
@@ -39,8 +34,17 @@ myApp.service('SpeechService', ['$http', '$location', function($http, $location)
     }// end getUserSpeeches
 
 
-
-
+    /** Get a single speech for editing */
+    self.populateSingleSpeech = function(id){
+        $http.get(`/api/speech/singleSpeech/${id}`)
+        .then(function(response){  
+            console.log('get single speech: ', response.data);
+            return response.data;
+        }).catch((err)=>{
+            console.log('error getting single speech');
+            
+        });
+    }//end single speech fetch function
 
 
 
