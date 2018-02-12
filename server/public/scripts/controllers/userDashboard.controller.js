@@ -1,22 +1,41 @@
 myApp.controller('UserController', ['UserService','NgTableParams','$mdDialog','SpeechService', function(UserService, NgTableParams, $mdDialog, SpeechService ) {
-  console.log('UserController created');
+  console.log('UserDashBoardController created');
   var self = this;
   self.userService = UserService;
   self.userObject = UserService.userObject;
-
-
+  self.userSpeeches = SpeechService.speechArray;
+  
 
   
+
+  self.getUserSpeeches = function(){
+    SpeechService.getUserSpeeches();
+  }
+  self.getUserSpeeches();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   /* Add Speech */
   self.newSpeech = {};
 
   self.addSpeech = function(newSpeech){
     console.log('addspeech clicked');
-    console.log('newSpeech: ', newSpeech );
+    
     SpeechService.addSpeech(newSpeech);
 
   }
-  
     
 /** Add Speech Modal **/
   

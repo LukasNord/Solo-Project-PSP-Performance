@@ -9,7 +9,7 @@
       
           <md-dialog-content>
             <div class="md-dialog-content">
-              <h2>Using .md-dialog-content class that sets the padding as the spec</h2>
+              <h2>Enter your Speech Statistics Here</h2>
               <table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped" >
                 <thead>
                   <tr>
@@ -26,10 +26,6 @@
                       <th>False Start</th>
                       <th>You Know</th>
                       <th>Other</th>
-
-                      
-                      <!-- <td>Edit Food</td>
-                      <td>Delete Food</td> -->
                   </tr>
               </thead>
               <tbody >
@@ -49,24 +45,16 @@
                       <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.false_start"> </td>
                       <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.you_know"> </td>
                       <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.other"> </td>
-                      
-                      
-                      <!-- <td><button ng-click="vm.toggle(food)">Edit Food</button></td>
-                      <td><button ng-click="vm.deleteFood(food)">Delete Food</button></td> -->
-                  </tr>
-                  <tr ng-if="food.editing">
-                      <td><input type="text" ng-model="food.name"></td>
-                      <td><input type="text" ng-model="food.deliciousness_rating"></td>
-                      <td><input type="text" ng-model="food.is_hot"></td>
-                      <td><button ng-click="vm.toggle(food)">Cancel Edit</button></td>
-                      <td><button ng-click="vm.updateFood(food)">Save Food</button></td>
-                      <td><button ng-click="vm.deleteFood(food)">Delete Food</button></td>
-                  </tr>
+                    </tr>
               </tbody>
               </table>
+              <label>Comments:</label><br>
+              <div class="row"> 
+                <textarea ng-model="vm.newSpeech.comment"  cols="75" rows="8"></textarea>
+              </div> 
             </div>
           </md-dialog-content>
-      
+          
           <md-dialog-actions layout="row">
             <md-button ng-click="vm.cancel()">
              Cancel
