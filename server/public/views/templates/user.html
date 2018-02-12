@@ -3,14 +3,17 @@
 
     <h1 id="welcome" class="lead">Welcome, {{vm.userObject.userName}}!</h1>
 
-    <table ng-table="vm.tableParams" class="table" show-filter="true">
-        <tr ng-repeat="user in $data">
-            <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
-                </td>
-            <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">
-                </td>
-        </tr>
-    </table>
+    
+    <div class="col-md-6">
+        <h3>ngTable directive</h3>
+        <table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped">
+            <tr ng-repeat="row in $data">
+            <td data-title="'Date'" header-title="'User name'">{{row.name}}</td>
+            <td data-title="'Topic'" header-title="'User age'" header-class="'bg-warning'">{{row.age}}</td>
+            <td data-title="'Money'" header-title="'User salary'">{{row.money}}</td>
+            </tr>
+        </table>
+    </div>
 
 
 

@@ -1,7 +1,7 @@
 var myApp = angular.module('myApp', ['ngRoute','ngMaterial','ngTable']);
 
 /// Routes ///
-myApp.config(['$routeProvider', '$locationProvider','ngTable', function($routeProvider, $locationProvider, ngTable) {
+myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider, ) {
   console.log('myApp -- config')
   $routeProvider
     .when('/', {

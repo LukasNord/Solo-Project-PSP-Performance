@@ -1,4 +1,4 @@
-myApp.controller('UserController', ['ngTableParams','UserService', function(UserService) {
+myApp.controller('UserController', ['UserService','NgTableParams', function(UserService, NgTableParams ) {
   console.log('UserController created');
   var self = this;
   self.userService = UserService;
@@ -6,8 +6,12 @@ myApp.controller('UserController', ['ngTableParams','UserService', function(User
 
 
 
-  var data = [{name: "Moroni", age: 50} /*,*/];
-  //  self.tableParams = new NgTableParams({}, { dataset: data});
+  var simpleList = [{Date: "12-01-2018", Topic: 'heroes'} /*,*/];
+  self.tableParams = new NgTableParams({
+    page: 1,
+    count: 20,
+    sorting: {}
+  }, { dataset: simpleList});
 
 
 
