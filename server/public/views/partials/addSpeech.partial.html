@@ -1,0 +1,79 @@
+<md-dialog aria-label="Add Speech">
+        <form ng-cloak>
+          <md-toolbar>
+            <div class="md-toolbar-tools">
+              <h2>Add a new speech</h2>
+              <span flex></span>
+            </div>
+          </md-toolbar>
+      
+          <md-dialog-content>
+            <div class="md-dialog-content">
+              <h2>Using .md-dialog-content class that sets the padding as the spec</h2>
+              <table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped" >
+                <thead>
+                  <tr>
+                      <th>Date (Required)</th>
+                      <th>Topic</th>
+                      <th>Um</th>
+                      <th>Uh</th>
+                      <th>Ah</th>
+                      <th>So</th>
+                      <th>Like</th>
+                      <th>And</th>
+                      <th>But</th>
+                      <th>Double Clutch</th>
+                      <th>False Start</th>
+                      <th>You Know</th>
+                      <th>Other</th>
+
+                      
+                      <!-- <td>Edit Food</td>
+                      <td>Delete Food</td> -->
+                  </tr>
+              </thead>
+              <tbody >
+                  <tr >
+                      <td>
+                        <input type="date" ng-model="vm.newSpeech.date"/>
+                      </td>                    
+                      <td><input type="text" placeholder="topic..." ng-model="vm.newSpeech.topic"></td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.um"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.uh"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.ah"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.so"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.like"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.and"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.but"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.double_clutch"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.false_start"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.you_know"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.other"> </td>
+                      
+                      
+                      <!-- <td><button ng-click="vm.toggle(food)">Edit Food</button></td>
+                      <td><button ng-click="vm.deleteFood(food)">Delete Food</button></td> -->
+                  </tr>
+                  <tr ng-if="food.editing">
+                      <td><input type="text" ng-model="food.name"></td>
+                      <td><input type="text" ng-model="food.deliciousness_rating"></td>
+                      <td><input type="text" ng-model="food.is_hot"></td>
+                      <td><button ng-click="vm.toggle(food)">Cancel Edit</button></td>
+                      <td><button ng-click="vm.updateFood(food)">Save Food</button></td>
+                      <td><button ng-click="vm.deleteFood(food)">Delete Food</button></td>
+                  </tr>
+              </tbody>
+              </table>
+            </div>
+          </md-dialog-content>
+      
+          <md-dialog-actions layout="row">
+            <md-button ng-click="vm.cancel()">
+             Cancel
+            </md-button>
+            <md-button ng-click="vm.answer(vm.newSpeech)" class="md-primary">
+              Submit
+            </md-button>
+          </md-dialog-actions>
+        </form>
+      </md-dialog>

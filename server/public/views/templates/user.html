@@ -3,23 +3,18 @@
 
     <h1 id="welcome" class="lead">Welcome, {{vm.userObject.userName}}!</h1>
 
-    
+    <md-button class="md-primary" ng-click="vm.showAddSpeechModal()">Add Speech</md-button>
     <div class="col-md-6">
         <h3>ngTable directive</h3>
-        <table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped">
+        <table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped" >
             <tr ng-repeat="row in $data">
-            <td data-title="'Date'" header-title="'User name'">{{row.name}}</td>
-            <td data-title="'Topic'" header-title="'User age'" header-class="'bg-warning'">{{row.age}}</td>
-            <td data-title="'Money'" header-title="'User salary'">{{row.money}}</td>
+            <td data-title="'Date'">{{row.date}}</td>
+            <td data-title="'Topic'" >{{row.topic}}</td>
+            <td><md-button class="btn-danger">Test</md-button></td>
             </tr>
         </table>
     </div>
 
 
 
-
-
-
-
-    
 </div>
