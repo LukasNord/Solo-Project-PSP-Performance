@@ -32,8 +32,8 @@ myApp.controller('UserController', ['UserService','NgTableParams','$mdDialog','S
 
   self.addSpeech = function(newSpeech){
     console.log('addspeech clicked');
-    
     SpeechService.addSpeech(newSpeech);
+    
 
   }
     

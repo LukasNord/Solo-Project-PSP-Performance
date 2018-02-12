@@ -10,7 +10,7 @@ myApp.service('SpeechService', ['$http', '$location', function($http, $location)
         $http.post('/api/speech/addSpeech', newSpeech)
         .then( function(response){
             console.log('speech added');
-            
+            self.getUserSpeeches();
         })
         .catch((err)=> {
             console.log('error posting: ', err);
