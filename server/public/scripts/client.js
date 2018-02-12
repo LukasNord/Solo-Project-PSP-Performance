@@ -1,7 +1,7 @@
-var myApp = angular.module('myApp', ['ngRoute','ngMaterial']);
+var myApp = angular.module('myApp', ['ngRoute','ngMaterial','ngTable']);
 
 /// Routes ///
-myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+myApp.config(['$routeProvider', '$locationProvider','ngTable', function($routeProvider, $locationProvider, ngTable) {
   console.log('myApp -- config')
   $routeProvider
     .when('/', {
@@ -33,6 +33,10 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
         }
       }
     })
+    // .when('/test', {
+    //   templateUrl: '/views/templates/test-login.html',
+    //   controller:  'TestController as vm'
+    // })
     .otherwise({
       template: '<h1>404</h1>'
     });

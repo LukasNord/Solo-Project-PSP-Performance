@@ -1,6 +1,22 @@
-<div ng-include="'views/partials/nav.html'"></div>
+<div ng-include="'views/partials/user.nav.html'"></div>
 <div class="container">
 
     <h1 id="welcome" class="lead">Welcome, {{vm.userObject.userName}}!</h1>
-    <button class="btn btn-default" ng-click="vm.userService.logout()">Log Out</button>
+
+    <table ng-table="vm.tableParams" class="table" show-filter="true">
+        <tr ng-repeat="user in $data">
+            <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
+                </td>
+            <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">
+                </td>
+        </tr>
+    </table>
+
+
+
+
+
+
+
+    
 </div>
