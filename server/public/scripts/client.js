@@ -1,7 +1,7 @@
-var myApp = angular.module('myApp', ['ngRoute','ngMaterial']);
+var myApp = angular.module('myApp', ['ngRoute','ngMaterial','ngTable']);
 
 /// Routes ///
-myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider, ) {
   console.log('myApp -- config')
   $routeProvider
     .when('/', {
@@ -16,7 +16,7 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
       controller: 'LoginController as vm'
     })
     .when('/user', {
-      templateUrl: '/views/templates/user.html',
+      templateUrl: '/views/templates/userDashboard.html',
       controller: 'UserController as vm',
       resolve: {
         getuser : function(UserService){

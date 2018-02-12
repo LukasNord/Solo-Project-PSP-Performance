@@ -11,8 +11,8 @@ body, html {
 }
 
 .instructions {
-  background-color: #333333;
-  color: #DDDDDD;
+  background-color: #07aa9e;
+  color: white;
   padding: 15px;
 }
 
@@ -77,4 +77,18 @@ li a {
 li a:hover {
   text-decoration: underline;
   color: #eee;
+}
+
+
+
+/*Date Picker */
+.full button span {
+  background-color: limegreen;
+  border-radius: 32px;
+  color: black;
+}
+.partially button span {
+  background-color: orange;
+  border-radius: 32px;
+  color: black;
 }

@@ -1,0 +1,67 @@
+<md-dialog aria-label="Add Speech">
+        <form ng-cloak>
+          <md-toolbar>
+            <div class="md-toolbar-tools">
+              <h2>Add a new speech</h2>
+              <span flex></span>
+            </div>
+          </md-toolbar>
+      
+          <md-dialog-content>
+            <div class="md-dialog-content">
+              <h2>Enter your Speech Statistics Here</h2>
+              <table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped" >
+                <thead>
+                  <tr>
+                      <th>Date (Required)</th>
+                      <th>Topic</th>
+                      <th>Um</th>
+                      <th>Uh</th>
+                      <th>Ah</th>
+                      <th>So</th>
+                      <th>Like</th>
+                      <th>And</th>
+                      <th>But</th>
+                      <th>Double Clutch</th>
+                      <th>False Start</th>
+                      <th>You Know</th>
+                      <th>Other</th>
+                  </tr>
+              </thead>
+              <tbody >
+                  <tr >
+                      <td>
+                        <input type="date" ng-model="vm.newSpeech.date"/>
+                      </td>                    
+                      <td><input type="text" placeholder="topic..." ng-model="vm.newSpeech.topic"></td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.um"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.uh"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.ah"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.so"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.like"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.and"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.but"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.double_clutch"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.false_start"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.you_know"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.other"> </td>
+                    </tr>
+              </tbody>
+              </table>
+              <label>Comments:</label><br>
+              <div class="row"> 
+                <textarea ng-model="vm.newSpeech.comment"  cols="75" rows="8"></textarea>
+              </div> 
+            </div>
+          </md-dialog-content>
+          
+          <md-dialog-actions layout="row">
+            <md-button ng-click="vm.cancel()">
+             Cancel
+            </md-button>
+            <md-button ng-click="vm.answer(vm.newSpeech)" class="md-primary">
+              Submit
+            </md-button>
+          </md-dialog-actions>
+        </form>
+      </md-dialog>
