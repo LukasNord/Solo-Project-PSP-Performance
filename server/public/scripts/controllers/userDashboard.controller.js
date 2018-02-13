@@ -6,7 +6,9 @@ myApp.controller('UserController', ['UserService','NgTableParams','$mdDialog','S
   self.userSpeeches = SpeechService.speechArray;
   self.getUserSpeeches = SpeechService.getUserSpeeches;
   
- 
+ /** Get Speeches  to display to DOM**/
+  
+  self.getUserSpeeches();   
   
 
 /** Edit Speech Modal **/
@@ -24,12 +26,11 @@ self.editSpeech = function(speechObject){
           item: function () {
             return speechObject;
           }
-        }
-        
+        }       
       })
       .then(function (answer) {
-        console.log('answer: ', answer);
-        (answer);
+        console.log('edit speech answer: ', answer);
+        SpeechService.editSpeech(answer);
       }, function () {
         self.status = 'You cancelled the dialog.';
       });
@@ -41,9 +42,9 @@ self.editSpeech = function(speechObject){
 
     /** Format Date to allow calendar to display values from database **/
     self.formatDate = function(dateString){
-      return  new Date(dateString);
+      return new Date(dateString);
     }
-    /** Make item available to controller data binding with DOM **/
+    /** Copy properties of passed in speech object to modal controller speech object**/
     self.editSingleSpeech = item;
 
     /*fix the date string*/
@@ -52,13 +53,11 @@ self.editSpeech = function(speechObject){
     self.hide = function () {
       $mdDialog.hide();
     };
-
     self.cancel = function () {
       $mdDialog.cancel();
     };
-
     self.answer = function (answer) {
-      console.log('answer', answer);
+      console.log('edit speech answer', answer);
 
       $mdDialog.hide(answer);
     };
@@ -69,9 +68,7 @@ self.editSpeech = function(speechObject){
 }
 
 
-/** Get Speeches via Service shortcut **/
-  
-self.getUserSpeeches();
+
 
 /**  Add Speech  Functionality **/
 self.newSpeech = {};
