@@ -12,7 +12,7 @@ myApp.controller('UserController', ['UserService','NgTableParams','$mdDialog','S
   
 
 /** Edit Speech Modal **/
-
+//Instantiate modal, Display on DOM, pass control to EditDialogController//
 self.editSpeech = function(speechObject){
   self.showEditSpeechModal = function (ev) {
     $mdDialog.show({
@@ -36,9 +36,24 @@ self.editSpeech = function(speechObject){
       });
   };
 
-  function EditDialogController($mdDialog, item) {
+  // EDIT MODAL CONTROLLER
+  function EditDialogController($mdDialog, item, SpeechService) {
     const self = this;
     self.editSingleSpeech = {};
+
+    /** Delete Speech modal interaction**/
+    self.deleteSpeech = function(speech){
+      console.log('hit delete btn: ', speech);
+      var check = window.confirm('Are you sure you wish to delete this speech?');
+      if(check === true){
+        self.cancel();
+        SpeechService.deleteSpeech(speech);
+      }
+    } // end delete speech modal interaction
+
+
+
+
 
     /** Format Date to allow calendar to display values from database **/
     self.formatDate = function(dateString){
@@ -65,7 +80,7 @@ self.editSpeech = function(speechObject){
   
   //Open modal on click of Edit button//
   self.showEditSpeechModal();
-}
+}// END Edit Speech Modal Control Logic
 
 
 

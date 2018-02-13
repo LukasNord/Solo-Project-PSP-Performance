@@ -42,6 +42,18 @@ myApp.service('SpeechService', ['$http', '$location', function($http, $location)
 
 
 
+    /** Delete a Speech **/
+    self.deleteSpeech = function(deletedSpeech){
+        console.log('hit Service deleted speech: ', deletedSpeech);
+        $http.delete(`/api/speech/deleteSpeech/${deletedSpeech.id}`)
+        .then(function(response){
+            console.log('successfully deleted speech');
+            self.getUserSpeeches();
+        }).catch((err)=>{
+            console.log('failed to delete speech');   
+        });
+    }
+
 
 
 
