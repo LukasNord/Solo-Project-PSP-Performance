@@ -1,7 +1,7 @@
 var myApp = angular.module('myApp', ['ngRoute','ngMaterial','ngTable']);
 
 /// Routes ///
-myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider, ) {
+myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   console.log('myApp -- config')
   $routeProvider
     .when('/', {
@@ -17,7 +17,7 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
     })
     .when('/user', {
       templateUrl: '/views/templates/userDashboard.html',
-      controller: 'UserController as vm',
+      controller: 'UserDashboardController as vm',
       resolve: {
         getuser : function(UserService){
           return UserService.getuser();
