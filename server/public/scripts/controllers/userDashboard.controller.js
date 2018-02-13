@@ -47,11 +47,8 @@ self.editSpeech = function(speechObject){
     self.editSingleSpeech = item;
 
     /*fix the date string*/
-    var dateString = self.editSingleSpeech.date;
-    self.editSingleSpeech.date = self.formatDate(dateString);
-    console.log('fixed date? ', self.editSingleSpeech)  
-    
-
+    self.editSingleSpeech.date = self.formatDate(self.editSingleSpeech.date);
+     
     self.hide = function () {
       $mdDialog.hide();
     };
