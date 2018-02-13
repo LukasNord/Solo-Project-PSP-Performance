@@ -9,14 +9,9 @@ myApp.controller('UserController', ['UserService','NgTableParams','$mdDialog','S
  
   
 
-
-/** Edit Speech **/
+/** Edit Speech Modal **/
 
 self.editSpeech = function(speechObject){
-   self.speechTest = [];
-   self.speechTest.push(speechObject);
-  console.log('single speech: ', self.speechTest);
-  
   self.showEditSpeechModal = function (ev) {
     $mdDialog.show({
         controller: EditDialogController,
@@ -24,18 +19,39 @@ self.editSpeech = function(speechObject){
         templateUrl: '../views/partials/editSpeech.partial.html',
         parent: angular.element(document.body),
         targetEvent: ev,
-        clickOutsideToClose: true
+        clickOutsideToClose: false,
+        resolve: {
+          item: function () {
+            return speechObject;
+          }
+        }
         
       })
       .then(function (answer) {
-        self.addSpeech(answer);
+        console.log('answer: ', answer);
+        (answer);
       }, function () {
         self.status = 'You cancelled the dialog.';
       });
   };
 
-  function EditDialogController($mdDialog) {
+  function EditDialogController($mdDialog, item) {
     const self = this;
+    self.editSingleSpeech = {};
+
+    /** Format Date to allow calendar to display values from database **/
+    self.formatDate = function(dateString){
+      return  new Date(dateString);
+    }
+    /** Make item available to controller data binding with DOM **/
+    self.editSingleSpeech = item;
+
+    /*fix the date string*/
+    var dateString = self.editSingleSpeech.date;
+    self.editSingleSpeech.date = self.formatDate(dateString);
+    console.log('fixed date? ', self.editSingleSpeech)  
+    
+
     self.hide = function () {
       $mdDialog.hide();
     };
@@ -51,28 +67,23 @@ self.editSpeech = function(speechObject){
     };
   }
   
-  
+  //Open modal on click of Edit button//
   self.showEditSpeechModal();
 }
 
 
-
-
-
-
-
-
-/** Get Speeches  **/
+/** Get Speeches via Service shortcut **/
   
-  self.getUserSpeeches();
+self.getUserSpeeches();
 
-  /* Add Speech */
-  self.newSpeech = {};
+/**  Add Speech  Functionality **/
+self.newSpeech = {};
 
-  self.addSpeech = function(newSpeech){
-    console.log('addspeech clicked');
+/** Service Call to send speech object returned by Modal controller to database */
+self.addSpeech = function(newSpeech){
+
     SpeechService.addSpeech(newSpeech);
-  }
+}
     
 /** Add Speech Modal **/
   
@@ -108,7 +119,7 @@ self.editSpeech = function(speechObject){
       $mdDialog.hide(answer);
     };
 
-    /** Edit Speech Modal **/
+    
 
    
 
