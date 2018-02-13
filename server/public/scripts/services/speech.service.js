@@ -33,7 +33,8 @@ myApp.service('SpeechService', ['$http', '$location', function($http, $location)
         
         $http.put(`/api/speech/editSpeech/`, editedSpeech)
         .then(function(response){
-            console.log('Edit Speech came back success!');        
+            console.log('Edit Speech came back success!');  
+            self.getUserSpeeches();      
         }).catch((err)=>{
             console.log('error editing speech on put call: ', err); 
         });
