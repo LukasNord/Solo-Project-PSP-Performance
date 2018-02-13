@@ -1,14 +1,15 @@
 <md-dialog aria-label="Add Speech">
         <form ng-cloak>
           <md-toolbar>
-            <div class="md-toolbar-tools">
-              <h2>Edit your speech</h2>
-              <span flex></span>
+            <div class="md-toolbar-tools row">
+              <h2>Edit your speech</h2><span flex></span><md-button class="md-warn md-raised" ng-click="vm.deleteSpeech(vm.editSingleSpeech)">Delete Speech</md-button>
+              
             </div>
           </md-toolbar>
           <md-dialog-content>
             <div class="md-dialog-content">
-              <h2>Enter your Speech Statistics Here</h2>
+              <h2>Enter your Speech Statistics Here</h2> 
+              
               <table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped" >
                 <thead>
                   <tr>
@@ -55,10 +56,10 @@
           </md-dialog-content>
           
           <md-dialog-actions layout="row">
-            <md-button ng-click="vm.cancel()">
+            <md-button class="md-warn raised" ng-click="vm.cancel()">
                 Cancel
             </md-button>
-            <md-button ng-click="vm.answer(vm.editSingleSpeech)" class="md-primary">
+            <md-button ng-click="vm.answer(vm.editSingleSpeech)" class="md-primary raised">
                 Update
             </md-button>
           </md-dialog-actions>

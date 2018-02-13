@@ -70,6 +70,30 @@ router.put('/editSpeech', isAuthenticated, (req,res,next)=>{
 
 
 
+router.delete('/deleteSpeech/:id', isAuthenticated, (req,res,next)=>{
+
+    console.log('req.params.id: ', req.params.id);
+    const deleteQuery = `DELETE FROM user_speeches WHERE id = $1;`
+    
+    pool.query(deleteQuery,[req.params.id])
+        .then((result)=>{
+            console.log('item deleted: ', result);
+            
+            res.sendStatus(202)
+        }).catch((err)=>{
+            console.log('failed to delete item: ', err);
+            res.sendStatus(500)
+        });
+
+});
+
+
+
+
+
+
+
+
 
 
 
