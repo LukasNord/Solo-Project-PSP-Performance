@@ -1,14 +1,15 @@
 <md-dialog aria-label="Add Speech">
         <form ng-cloak>
           <md-toolbar>
-            <div class="md-toolbar-tools">
-              <h2>Edit your speech</h2>
-              <span flex></span>
+            <div class="md-toolbar-tools row">
+              <h2>Edit your speech</h2><span flex></span> <md-button class="md-warn md-raised">Delete Speech</md-button>
+              
             </div>
           </md-toolbar>
           <md-dialog-content>
             <div class="md-dialog-content">
-              <h2>Enter your Speech Statistics Here</h2>
+              <h2>Enter your Speech Statistics Here</h2> 
+              
               <table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped" >
                 <thead>
                   <tr>
