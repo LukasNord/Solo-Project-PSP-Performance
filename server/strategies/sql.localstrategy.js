@@ -20,7 +20,6 @@ passport.deserializeUser(function(id, done) {
     var user = {};
 
     client.query("SELECT * FROM users WHERE id = $1", [id], function(err, result) {
-
       // Handle Errors
       if(err) {
         console.log('query err ', err);
