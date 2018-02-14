@@ -13,23 +13,17 @@ var isAuthenticated = function (req, res, next) {
     res.send('Must be logged in to add items!');
   }
 
-// /** GET single speech  Not currently in use **/
-// router.get('/singleSpeech/:id', isAuthenticated, (req,res)=>{
-//     const speechId = req.params.id;
-//     const getSingleSpeechQuery = `SELECT * FROM user_speeches WHERE user_speeches.id = $1`;
-//     pool.query(getSingleSpeechQuery, [speechId])
-//         .then((result)=>{
-//             res.send(result.rows);
-//         }).catch((err)=>{
-//             console.log('failed to get single speech');          
-//         });
-// }); //end get single speech
+
 
 /** Get All User Speeches**/
 router.get('/getUserSpeeches',isAuthenticated, (req,res)=>{
+    console.log('---> Hit GET USER SPEECHES');
+    
     const getSpeechesQuery = `SELECT * FROM user_speeches WHERE user_speeches.user_id = $1`;
     pool.query(getSpeechesQuery, [req.user.id])
         .then((result)=> {
+            console.log('result.rows: ', result.rows);
+            
             res.send(result.rows);  
         }).catch((err)=>{
             console.log('error getting speeches: ', err);

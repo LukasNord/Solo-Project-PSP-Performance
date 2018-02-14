@@ -5,6 +5,7 @@ const userStrategy = require('../strategies/sql.localstrategy');
 const pool = require('../modules/pool.js');
 const router = express.Router();
 
+
 // Checks to make sure the user is logged to hit any routes where we use the middleware
 var isAuthenticated = function (req, res, next) {
     if (req.isAuthenticated()){
@@ -16,24 +17,21 @@ var isAuthenticated = function (req, res, next) {
 
 
 router.get('/getReports', isAuthenticated,(req,res)=>{
-
+    const counterArray = [];
     console.log('--------- Reports -----req.user: ', req.user );
-    const getReportsQuery = `SELECT 
-                            COALESCE(NULLIF(ah,''), '0')
-                            COALESCE(NULLIF(uh,''), '0')
-                            COALESCE(NULLIF(likes,''), '0')
-                            COALESCE(NULLIF(so,''), '0')
-                            COALESCE(NULLIF(but,''), '0')
-                            COALESCE(NULLIF(ands,''), '0')
-                            COALESCE(NULLIF(um,''), '0')
-                            COALESCE(NULLIF(you_know,''), '0')
-                            COALESCE(NULLIF(double_clutch,''), '0')
-                            COALESCE(NULLIF(false_start,''), '0')
-                            COALESCE(NULLIF(other,''), '0')
-                            FROM user_speeches WHERE user_speeches.user_id = $1`;
-    pool.query(getReportsQuery,[req.user.id])
+    const getAhQuery = `SELECT date , SUM(ah) FROM user_speeches WHERE user_speeches.user_id = $1 GROUP BY user_speeches.date`;
+    const getUhQuery = `SELECT date , SUM(uh) FROM user_speeches WHERE user_speeches.user_id = $1 GROUP BY user_speeches.date`;               
+
+    const getLikesQuery = `SELECT date , SUM(likes) FROM user_speeches WHERE user_speeches.user_id = $1 GROUP BY user_speeches.date`;                
+
+    const getSoQuery = `SELECT date , SUM(so) FROM user_speeches WHERE user_speeches.user_id = $1 GROUP BY user_speeches.date`;              
+
+    pool.query(getAhQuery,[req.user.id])
         .then((result)=>{
-            console.log('result of reports query: ', result.rows);
+           counterArray.push(result.rows);
+           console.log('pushed into array: ', counterArray);
+           res.send(counterArray);
+           
         }).catch((err)=>{
             console.log('error getting reports: ', err);
             

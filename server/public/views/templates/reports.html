@@ -10,5 +10,7 @@
   chart-dataset-override="vm.datasetOverride" chart-click="vm.onClick()">
   </canvas>
 
-
+  <div ng-repeat="thing in vm.reportResults.list">
+    {{thing.date}}{{thing.sum}}
+  </div>
 </div>

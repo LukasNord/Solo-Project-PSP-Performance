@@ -4,13 +4,10 @@ myApp.controller('UserDashboardController', ['UserService','NgTableParams','$mdD
   self.userService = UserService;
   self.userObject = UserService.userObject;
   self.userSpeeches = SpeechService.speechArray;
-  self.getUserSpeeches = SpeechService.getUserSpeeches;
+  
   
  /** Get Speeches  to display to DOM**/
-  
-  self.getUserSpeeches();   
-  
-
+  SpeechService.getUserSpeeches();
   /** Edit Speech Modal **/
   //Instantiate modal, Display on DOM, pass control to EditDialogController//
   self.editSpeech = function(speechObject){
@@ -49,6 +46,7 @@ myApp.controller('UserDashboardController', ['UserService','NgTableParams','$mdD
         self.cancel();
         SpeechService.deleteSpeech(speech);
       }
+      SpeechService.getUserSpeeches();
     } // end delete speech modal interaction
 
     /** Format Date to allow calendar to display values from database **/
