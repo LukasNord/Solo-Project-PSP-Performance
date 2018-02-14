@@ -22,8 +22,6 @@ router.get('/getUserSpeeches',isAuthenticated, (req,res)=>{
     const getSpeechesQuery = `SELECT * FROM user_speeches WHERE user_speeches.user_id = $1`;
     pool.query(getSpeechesQuery, [req.user.id])
         .then((result)=> {
-            console.log('result.rows: ', result.rows);
-            
             res.send(result.rows);  
         }).catch((err)=>{
             console.log('error getting speeches: ', err);

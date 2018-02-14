@@ -19,11 +19,11 @@ var isAuthenticated = function (req, res, next) {
 
 router.get('/getReports', isAuthenticated,(req,res)=>{
     
-    const getReportQuery = `SELECT * FROM user_speeches WHERE user_speeches.user_id = $1`;
+    const getReportQuery = `SELECT * FROM user_speeches WHERE user_speeches.user_id = $1 ORDER BY date ASC`;
             
     pool.query(getReportQuery,[req.user.id])
         .then((result)=>{
-          let test = arraySort();
+          let test = arraySort(result.rows);
           console.log('-------->test: ', test);
           
           res.send(result.rows);
