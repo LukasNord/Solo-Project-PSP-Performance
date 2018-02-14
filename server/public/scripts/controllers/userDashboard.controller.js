@@ -107,6 +107,19 @@ myApp.controller('UserDashboardController', ['UserService','NgTableParams','$mdD
 
   function DialogController($mdDialog) {
     const self = this;
+    self.newSpeech = {
+      um:0,
+      uh:0,
+      ah:0,
+      so:0,
+      like:0,
+      and:0,
+      but:0,
+      double_clutch: 0,
+      false_start: 0,
+      you_know: 0,
+      other: 0
+    };
     self.hide = function () {
       $mdDialog.hide();
     };

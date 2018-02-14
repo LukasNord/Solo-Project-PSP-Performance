@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute','ngMaterial','ngTable']);
+var myApp = angular.module('myApp', ['ngRoute','ngMaterial','ngTable','chart.js']);
 
 /// Routes ///
 myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
@@ -26,7 +26,7 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
     })
     .when('/info', {
       templateUrl: '/views/templates/reports.html',
-      controller: 'InfoController as vm',
+      controller: 'ReportsController as vm',
       resolve: {
         getuser : function(UserService){
           return UserService.getuser();
