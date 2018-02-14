@@ -5,7 +5,7 @@
   </p>
   <button ng-click="vm.toggle()">Toggle Pie</button>
 
-  <canvas id="line" class="chart chart-line"  chart-data="vm.data"
+  <canvas id="line" class="chart chart-line"  chart-type="vm.type" chart-data="vm.data"
   chart-labels="vm.labels" chart-series="vm.series" chart-options="vm.options"
   chart-dataset-override="vm.datasetOverride" chart-click="vm.onClick()">
   </canvas>

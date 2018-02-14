@@ -25,9 +25,9 @@ myApp.service('ReportsService', ['$http', '$location', function($http, $location
 
     
     self.getReportData().then(function(response){
-        console.log('inside chain promise: ', response[0]);
+        console.log('inside chain promise: ', response);
         
-        self.reportResults.list = response[0];
+        self.reportResults.list = response;
 
     });
 
