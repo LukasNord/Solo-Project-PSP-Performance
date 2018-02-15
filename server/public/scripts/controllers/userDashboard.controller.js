@@ -96,7 +96,7 @@ myApp.controller('UserDashboardController', ['UserService','NgTableParams','$mdD
         templateUrl: '../views/partials/addSpeech.partial.html',
         parent: angular.element(document.body),
         targetEvent: ev,
-        clickOutsideToClose: true
+        clickOutsideToClose: false
       })
       .then(function (answer) {
         console.log('answer from submit button: ', answer);
