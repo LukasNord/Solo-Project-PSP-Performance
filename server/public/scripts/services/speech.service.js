@@ -27,7 +27,6 @@ myApp.service('SpeechService', ['$http', '$location', function($http, $location)
         });
     }// end getUserSpeeches
 
-
     /** PUT Edit Speech in database **/
     self.editSpeech = function(editedSpeech){
         
@@ -46,11 +45,13 @@ myApp.service('SpeechService', ['$http', '$location', function($http, $location)
     self.deleteSpeech = function(deletedSpeech){
         $http.delete(`/api/speech/deleteSpeech/${deletedSpeech.id}`)
         .then(function(response){
-            console.log('successfully deleted speech');
-            self.getUserSpeeches();
+            console.log('successfully deleted speech:', response);
+            // self.getUserSpeeches();
         }).catch((err)=>{
-            console.log('failed to delete speech');   
+            console.log('failed to delete speech: ', err);   
+            
         });
+        
     }
 
 
