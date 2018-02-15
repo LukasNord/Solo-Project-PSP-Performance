@@ -1,3 +1,6 @@
+const moment = require('moment');
+
+
 
 function arraySort(arrayIn){
     
@@ -16,7 +19,7 @@ function arraySort(arrayIn){
     let otherArray = [];
 
     for(let i = 0; i<arrayIn.length; i++){
-        dateArray.push(arrayIn[i].date)
+        dateArray.push(moment(arrayIn[i].date).format("MMM, d GGGG"))
         umArray.push(arrayIn[i].um)
         uhArray.push(arrayIn[i].uh)
         ahArray.push(arrayIn[i].ah)

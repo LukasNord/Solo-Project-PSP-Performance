@@ -19,6 +19,12 @@ myApp.controller('ReportsController', ['UserService','ReportsService', function(
     // };
     self.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
     self.options = {
+        title: {
+            position: 'top',
+            display: true,
+            text: 'Filler Words',
+            fontSize: 36
+        },
         scales: {
         yAxes: [
             {
