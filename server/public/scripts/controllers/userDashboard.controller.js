@@ -5,7 +5,6 @@ myApp.controller('UserDashboardController', ['UserService','NgTableParams','$mdD
   self.userObject = UserService.userObject;
   self.userSpeeches = SpeechService.speechArray;
   
-  
  /** Get Speeches  to display to DOM**/
   SpeechService.getUserSpeeches().then(function(response){
       self.userSpeeches.list = response;
@@ -82,11 +81,7 @@ myApp.controller('UserDashboardController', ['UserService','NgTableParams','$mdD
   }// END Edit Speech Modal Control Logic
 
   /**  Add Speech  Functionality **/
-  self.newSpeech = {};
-
-  /** Service Call to send speech object returned by Modal controller to database */
-   
-      
+  self.newSpeech = {};    
   /** Add Speech Modal **/
     
   self.showAddSpeechModal = function (ev) {
