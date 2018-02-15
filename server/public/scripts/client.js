@@ -24,7 +24,7 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
         }
       }
     })
-    .when('/info', {
+    .when('/reports', {
       templateUrl: '/views/templates/reports.html',
       controller: 'ReportsController as vm',
       resolve: {

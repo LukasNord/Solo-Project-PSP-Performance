@@ -9,16 +9,14 @@ myApp.controller('ReportsController', ['UserService','ReportsService', function(
     self.labels = ["January", "February", "March", "April", "May", "June", "July"];
     // self.labels = [];
     self.series = ["Um","Uh","Ah","So","Like","And","But","Double Clutch","False Start","You Know", "Other"];
-    self.data = [
-    [65, 59, 80, 81, 56, 55, 40],
-    [28, 48, 40, 19, 86, 27, 90],
-    [100,100,0,100,0,100,100]
-    ];
+    self.data = [];
+    
     //  self.onClick = function (points, evt) {
     
-    // };
-    self.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+    self.datasetOverride = [{ yAxisID: 'y-axis-1' }];
     self.options = {
+        
+        
         title: {
             position: 'top',
             display: true,
@@ -26,32 +24,16 @@ myApp.controller('ReportsController', ['UserService','ReportsService', function(
             fontSize: 36
         },
         scales: {
-        yAxes: [
-            {
+        yAxes: [{
             id: 'y-axis-1',
             type: 'linear',
             display: true,
             position: 'left'
-            },
-            {
-            id: 'y-axis-2',
-            type: 'linear',
-            display: true,
-            position: 'right'
-            }
-        ]
+            }]
         }
     };
-    /** **/
-    self.toggle = function () {
-        console.log('in toggle');
-        
-        self.type = 'pie';
-      };
-
-
-
-      ReportsService.getReportData().then(function(response){
+    
+    ReportsService.getReportData().then(function(response){
         console.log('inside chain promise: ', response);
         
         self.reportResults.list = response;
@@ -71,9 +53,85 @@ myApp.controller('ReportsController', ['UserService','ReportsService', function(
         
     });
 
-
-
-
+    self.colors =  [
+                    {fill: false,borderColor: '#0062ff',
+                        backgroundColor : '#0062ff',
+                        pointBackgroundColor: '#0062ff',
+                        pointHoverBackgroundColor: '#0062ff',
+                        borderColor: '#0062ff',
+                        pointBorderColor: '#0062ff',
+                        pointHoverBorderColor: '#0062ff',}, 
+                    {fill: false,
+                        backgroundColor : '#ff4b4f',
+                        pointBackgroundColor: '#ff4b4f',
+                        pointHoverBackgroundColor: '#ff4b4f',
+                        borderColor: '#ff4b4f',
+                        pointBorderColor: '#ff4b4f',
+                        pointHoverBorderColor: '#ff4b4f',}, 
+                    {fill: false,
+                        backgroundColor : '#F2A30F',
+                        pointBackgroundColor: '#F2A30F',
+                        pointHoverBackgroundColor: '#F2A30F',
+                        borderColor: '#F2A30F',
+                        pointBorderColor: '#F2A30F',
+                        pointHoverBorderColor: '#F2A30F',}, 
+                    {fill: false,
+                        backgroundColor : '#1A2A40',
+                        pointBackgroundColor: '#1A2A40',
+                        pointHoverBackgroundColor: '#1A2A40',
+                        borderColor: '#1A2A40',
+                        pointBorderColor: '#1A2A40',
+                        pointHoverBorderColor: '#1A2A40',}, 
+                    {fill: false,
+                        backgroundColor : '#72F522',
+                        pointBackgroundColor: '#72F522',
+                        pointHoverBackgroundColor: '#72F522',
+                        borderColor: '#72F522',
+                        pointBorderColor: '#72F522',
+                        pointHoverBorderColor: '#72F522',},
+                    {fill: false,
+                        backgroundColor : '#148F7A',
+                        pointBackgroundColor: '#148F7A',
+                        pointHoverBackgroundColor: '#148F7A',
+                        borderColor: '#148F7A',
+                        pointBorderColor: '#148F7A',
+                        pointHoverBorderColor: '#148F7A',},
+                    {fill: false,
+                        backgroundColor : '#5E0409',
+                        pointBackgroundColor: '#5E0409',
+                        pointHoverBackgroundColor: '#5E0409',
+                        borderColor: '#5E0409',
+                        pointBorderColor: '#5E0409',
+                        pointHoverBorderColor: '#5E0409',},
+                    {fill: false,
+                        backgroundColor : '#2F367F',
+                        pointBackgroundColor: '#2F367F',
+                        pointHoverBackgroundColor: '#2F367F',
+                        borderColor: '#2F367F',
+                        pointBorderColor: '#2F367F',
+                        pointHoverBorderColor: '#2F367F',},
+                    {fill: false,
+                        backgroundColor : '#F2E205',
+                        pointBackgroundColor: '#F2E205',
+                        pointHoverBackgroundColor: '#F2E205',
+                        borderColor: '#F2E205',
+                        pointBorderColor: '#F2E205',
+                        pointHoverBorderColor: '#F2E205',},
+                    {fill: false,
+                        backgroundColor : '#F27405',
+                        pointBackgroundColor: '#F27405',
+                        pointHoverBackgroundColor: '#F27405',
+                        borderColor: '#F27405',
+                        pointBorderColor: '#F27405',
+                        pointHoverBorderColor: '#F27405',},
+                    {fill: false,
+                        backgroundColor : '#025159',
+                        pointBackgroundColor: '#025159',
+                        pointHoverBackgroundColor: '#025159',
+                        borderColor: '#025159',
+                        pointBorderColor: '#025159',
+                        pointHoverBorderColor: '#025159',},
+                 ];
 
 
 
