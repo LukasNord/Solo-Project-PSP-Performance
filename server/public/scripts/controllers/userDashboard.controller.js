@@ -1,4 +1,4 @@
-myApp.controller('UserDashboardController', ['UserService','NgTableParams','$mdDialog','SpeechService', function(UserService, NgTableParams, $mdDialog, SpeechService ) {
+myApp.controller('UserDashboardController', ['UserService','NgTableParams','$mdDialog','SpeechService', function(UserService, NgTableParams, $mdDialog, SpeechService) {
   console.log('UserDashBoardController created');
   var self = this;
   self.userService = UserService;
@@ -7,7 +7,9 @@ myApp.controller('UserDashboardController', ['UserService','NgTableParams','$mdD
   
   
  /** Get Speeches  to display to DOM**/
-  SpeechService.getUserSpeeches();
+  SpeechService.getUserSpeeches().then(function(response){
+      self.userSpeeches.list = response;
+  });
   /** Edit Speech Modal **/
   //Instantiate modal, Display on DOM, pass control to EditDialogController//
   self.editSpeech = function(speechObject){
@@ -30,6 +32,10 @@ myApp.controller('UserDashboardController', ['UserService','NgTableParams','$mdD
           SpeechService.editSpeech(answer);
         }, function () {
           self.status = 'You cancelled the dialog.';
+          console.log('exited modal via hide or cancel method');
+          SpeechService.getUserSpeeches().then(function(response){
+            self.userSpeeches.list = response;
+        });
         });
     };
 
@@ -45,10 +51,8 @@ myApp.controller('UserDashboardController', ['UserService','NgTableParams','$mdD
       if(check === true){
         self.cancel();
         SpeechService.deleteSpeech(speech);
-      }
-      SpeechService.getUserSpeeches();
-    } // end delete speech modal interaction
-
+      } // end delete speech modal interaction
+    }
     /** Format Date to allow calendar to display values from database **/
     self.formatDate = function(dateString){
       return new Date(dateString);
@@ -64,6 +68,7 @@ myApp.controller('UserDashboardController', ['UserService','NgTableParams','$mdD
     };
     self.cancel = function () {
       $mdDialog.cancel();
+      
     };
     self.answer = function (answer) {
       console.log('edit speech answer', answer);
@@ -80,10 +85,7 @@ myApp.controller('UserDashboardController', ['UserService','NgTableParams','$mdD
   self.newSpeech = {};
 
   /** Service Call to send speech object returned by Modal controller to database */
-  self.addSpeech = function(newSpeech){
-
-      SpeechService.addSpeech(newSpeech);
-  }
+   
       
   /** Add Speech Modal **/
     
@@ -97,7 +99,12 @@ myApp.controller('UserDashboardController', ['UserService','NgTableParams','$mdD
         clickOutsideToClose: true
       })
       .then(function (answer) {
-        self.addSpeech(answer);
+        console.log('answer from submit button: ', answer);
+        SpeechService.addSpeech(answer).then(function(response){
+          SpeechService.getUserSpeeches().then(function(response){
+            self.userSpeeches.list = response;
+          });
+        });
       }, function () {
         self.status = 'You cancelled the dialog.';
       });
@@ -126,21 +133,17 @@ myApp.controller('UserDashboardController', ['UserService','NgTableParams','$mdD
       $mdDialog.cancel();
     };
 
-    self.answer = function (answer) {
-      console.log('answer: ', answer);
-      
-        $mdDialog.hide(answer);
-      }
+    // self.answer = function (answer) {
+    //   console.log('answer: ', answer);
+    //     $mdDialog.hide(answer);
+    //   }
     self.submitSpeech = function(speech){
       if(!speech){
         window.alert('please enter some data.')
       }else if(speech.date == null ){
-        console.log('date checkNull: ', speech.date);
-        
         window.alert('Please add a date to continue.')
-        console.log('no date');
       }else{
-        console.log('speech has a date! ', speech.date);
+        
         $mdDialog.hide(speech);
       }
     }
