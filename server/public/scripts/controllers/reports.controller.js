@@ -7,7 +7,8 @@ myApp.controller('ReportsController', ['UserService','ReportsService', function(
 
     self.type = 'chart';
     self.labels = ["January", "February", "March", "April", "May", "June", "July"];
-    self.series = ["Ah's",];
+    // self.labels = [];
+    self.series = ["Um","Uh","Ah","So","Like","And","But","Double Clutch","False Start","You Know", "Other"];
     self.data = [
     [65, 59, 80, 81, 56, 55, 40],
     [28, 48, 40, 19, 86, 27, 90],
@@ -44,7 +45,25 @@ myApp.controller('ReportsController', ['UserService','ReportsService', function(
 
 
 
-
+      ReportsService.getReportData().then(function(response){
+        console.log('inside chain promise: ', response);
+        
+        self.reportResults.list = response;
+        self.labels = response[0];
+        self.data[0] = response[1];
+        self.data[1] = response[2];
+        self.data[2] = response[3];
+        self.data[3] = response[4];
+        self.data[4] = response[5];
+        self.data[5] = response[6];
+        self.data[6] = response[7];
+        self.data[7] = response[8];
+        self.data[8] = response[9];
+        self.data[9] = response[10];
+        self.data[10] = response[11];
+        
+        
+    });
 
 
 
