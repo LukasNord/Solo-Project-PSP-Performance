@@ -15,13 +15,18 @@ myApp.controller('ReportsController', ['UserService','ReportsService', function(
     
     self.datasetOverride = [{ yAxisID: 'y-axis-1' }];
     self.options = {
-        
+        legend: {
+            display: true,
+            position: 'right',
+            
+        },
         
         title: {
             position: 'top',
             display: true,
             text: 'Filler Words',
-            fontSize: 36
+            fontSize: 36,
+            fontColor: '#000000'
         },
         scales: {
         yAxes: [{
