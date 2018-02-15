@@ -13,7 +13,7 @@ myApp.controller('ReportsController', ['UserService','ReportsService', function(
     
     //  self.onClick = function (points, evt) {
     
-    self.datasetOverride = [{ yAxisID: 'y-axis-1' }];
+    self.datasetOverride = [{ yAxisID: 'y-axis-1'}];
     self.options = {
         legend: {
             display: true,
@@ -29,11 +29,11 @@ myApp.controller('ReportsController', ['UserService','ReportsService', function(
             fontColor: '#000000'
         },
         scales: {
-        yAxes: [{
-            id: 'y-axis-1',
-            type: 'linear',
-            display: true,
-            position: 'left'
+            yAxes: [{
+                id: 'y-axis-1',
+                type: 'linear',
+                display: true,
+                position: 'left'
             }]
         }
     };
@@ -54,6 +54,9 @@ myApp.controller('ReportsController', ['UserService','ReportsService', function(
         self.data[8] = response[9];
         self.data[9] = response[10];
         self.data[10] = response[11];
+        
+        console.log('self.data: ', self.data);
+        console.log('self.labels: ', self.labels);
         
         
     });
