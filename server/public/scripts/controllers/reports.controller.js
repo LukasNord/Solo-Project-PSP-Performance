@@ -5,8 +5,11 @@ myApp.controller('ReportsController', ['UserService','ReportsService', function(
     self.userObject = UserService.userObject;
     self.reportResults = ReportsService.reportResults;
 
+
+
+
+    /*** Line Chart ***/
     self.type = 'chart';
-    self.labels = ["January", "February", "March", "April", "May", "June", "July"];
     // self.labels = [];
     self.series = ["Um","Uh","Ah","So","Like","And","But","Double Clutch","False Start","You Know", "Other"];
     self.data = [];
@@ -22,7 +25,7 @@ myApp.controller('ReportsController', ['UserService','ReportsService', function(
         title: {
             position: 'top',
             display: true,
-            text: 'Filler Words',
+            text: 'Filler Words Over Time',
             fontSize: 36,
             fontColor: '#000000'
         },
@@ -35,9 +38,8 @@ myApp.controller('ReportsController', ['UserService','ReportsService', function(
             }]
         }
     };
-    
+    /** Parse Response Data into Line chart data arrays **/
     ReportsService.getReportData().then(function(response){
-        console.log('inside chain promise: ', response);
         
         self.reportResults.list = response;
         self.labels = response[0];
@@ -53,10 +55,20 @@ myApp.controller('ReportsController', ['UserService','ReportsService', function(
         self.data[9] = response[10];
         self.data[10] = response[11];
         
-        console.log('self.data: ', self.data);
-        console.log('self.labels: ', self.labels);
-        
-        
+        /** calculate average**/
+        self.pieData[0] = self.calculateAverages(self.data[0]);
+        self.pieData[1] = self.calculateAverages(self.data[1]);
+        self.pieData[2] = self.calculateAverages(self.data[2]);
+        self.pieData[3] = self.calculateAverages(self.data[3]);
+        self.pieData[4] = self.calculateAverages(self.data[4]);
+        self.pieData[5] = self.calculateAverages(self.data[5]);
+        self.pieData[6] = self.calculateAverages(self.data[6]);
+        self.pieData[7] = self.calculateAverages(self.data[7]);
+        self.pieData[8] = self.calculateAverages(self.data[8]);
+        self.pieData[9] = self.calculateAverages(self.data[9]);
+        self.pieData[10] = self.calculateAverages(self.data[10]);
+
+
     });
 
     self.colors =  [
@@ -144,9 +156,37 @@ myApp.controller('ReportsController', ['UserService','ReportsService', function(
 
 
 
+/** Pie Chart **/
+//The Pie chart will look better with averages over time.
+self.pieLabels = ["Um","Uh","Ah","So","Like","And","But","Double Clutch","False Start","You Know", "Other"];
+self.pieData = [300, 500, 100];
+self.pieOptions = {
+    legend: {
+        display: true,
+        position: 'right',
+    },
+    title: {
+        display: true,
+        position: 'top',
+        fontSize: 36,
+        fontColor: '#000000',
+        text: 'Average Across Time'
+
+    }
+
+};
 
 
-
+//takes in an array and returns the average
+self.calculateAverages = function(array){
+    
+    let sum = 0;
+    for(let i=0;i<array.length;i++){
+        sum+= array[i]
+    }
+    
+    return (sum / array.length);
+}
 
 
 
