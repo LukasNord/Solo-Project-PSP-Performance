@@ -9,8 +9,11 @@ myApp.service('UserService', ['$http', '$location', function($http, $location){
         if(response.data.username) {
             // user has a curret session on the server
             self.userObject.userName = response.data.username;
-            console.log('UserService -- getuser -- User Data: ', self.userObject.userName);
-            console.log(response.data.user_type);
+          if(response.data.user_type == 1){
+              $location.path("/admin");
+            }else{
+              $location
+            }
         } else {
             console.log('UserService -- getuser -- failure');
             // user has no session, bounce them back to the login page

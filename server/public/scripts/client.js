@@ -33,6 +33,15 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
         }
       }
     })
+    .when('/admin',{
+      templateUrl: '/views/templates/reports.html',
+      controller: 'ReportsController as vm',
+      resolve: {
+        getuser : function(UserService){
+          return UserService.getuser();
+        }
+      }
+    })
     .otherwise({
       template: '<h1>404</h1>'
     });
