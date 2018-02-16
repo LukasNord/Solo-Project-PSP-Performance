@@ -6,7 +6,7 @@ myApp.controller('LoginController', ['$http', '$location', 'UserService', functi
       password: ''
     };
     self.message = '';
-
+    self.userObject = UserService.userObject;
 /** User Login Logic - move to service eventually **/
 
     self.login = function () {
@@ -16,14 +16,10 @@ myApp.controller('LoginController', ['$http', '$location', 'UserService', functi
         console.log('sending to server...', self.user);
         $http.post('/api/user/login', self.user).then(
           function (response){
-            if(response.status == 200) {
-                UserService.getAdmin().then((response)=>{
-                  if(response == true){
-                    $location.path('/admin');
-                  }else{
+            
+            if(response.status == 200){
+                console.log('userObject: ', self.userObject)
                     $location.path('/user');
-                  }  
-                })  
             }else {
               console.log('failure error: ', response);
               self.message = "Incorrect credentials. Please try again.";

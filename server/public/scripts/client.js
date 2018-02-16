@@ -38,7 +38,8 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
       controller: 'adminDashboardController as vm',
       resolve: {
         getuser : function(UserService){
-          return UserService.getuser();
+           UserService.getAdmin()
+
         }
       }
     })
