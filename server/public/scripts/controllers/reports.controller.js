@@ -17,10 +17,8 @@ myApp.controller('ReportsController', ['UserService','ReportsService', function(
     self.options = {
         legend: {
             display: true,
-            position: 'right',
-            
-        },
-        
+            position: 'right', 
+        },    
         title: {
             position: 'top',
             display: true,
@@ -139,7 +137,7 @@ myApp.controller('ReportsController', ['UserService','ReportsService', function(
                         borderColor: '#025159',
                         pointBorderColor: '#025159',
                         pointHoverBorderColor: '#025159',},
-                 ];
+    ];
 
 
 

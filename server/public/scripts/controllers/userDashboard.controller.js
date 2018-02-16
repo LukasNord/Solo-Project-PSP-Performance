@@ -86,7 +86,7 @@ myApp.controller('UserDashboardController', ['UserService','NgTableParams','$mdD
     
   self.showAddSpeechModal = function (ev) {
     $mdDialog.show({
-        controller: DialogController,
+        controller: addSpeechDialogController,
         controllerAs: 'vm',
         templateUrl: '../views/partials/addSpeech.partial.html',
         parent: angular.element(document.body),
@@ -105,7 +105,7 @@ myApp.controller('UserDashboardController', ['UserService','NgTableParams','$mdD
       });
   };
 
-  function DialogController($mdDialog) {
+  function addSpeechDialogController($mdDialog) {
     const self = this;
     self.newSpeech = {
       um:0,
