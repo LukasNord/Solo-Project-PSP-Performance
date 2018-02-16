@@ -34,8 +34,8 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
       }
     })
     .when('/admin',{
-      templateUrl: '/views/templates/reports.html',
-      controller: 'ReportsController as vm',
+      templateUrl: '/views/templates/admin.html',
+      controller: 'adminDashboardController as vm',
       resolve: {
         getuser : function(UserService){
           return UserService.getuser();
