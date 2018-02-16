@@ -8,7 +8,7 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  // console.log('called deserializeUser - pg');
+  console.log('called deserializeUser - pg');
 
   pool.connect(function (err, client, release) {
     if(err) {
@@ -68,7 +68,7 @@ passport.use('local', new localStrategy({
 
             if(result.rows[0] != undefined) {
               user = result.rows[0];
-              console.log('User obj', user);
+              console.log('-------->User obj', user.user_type);
               // Hash and compare
               if(encryptLib.comparePassword(password, user.password)) {
                 // all good!

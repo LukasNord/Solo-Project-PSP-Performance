@@ -170,7 +170,7 @@ self.pieOptions = {
         position: 'top',
         fontSize: 36,
         fontColor: '#000000',
-        text: 'Average Across Time'
+        text: 'Average Word Usage'
 
     }
 
