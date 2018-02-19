@@ -13,6 +13,8 @@ env.config();
 const userRouter = require('./routes/user.router');
 const speechRouter = require('./routes/speech.router');
 const reportsRouter = require('./routes/reports.router');
+const cohortRouter = require('./routes/cohorts.router');
+
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -28,6 +30,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/speech', speechRouter);
 app.use('/api/reports', reportsRouter);
+app.use('/api/cohort', cohortRouter);
 
 // Serve static files
 app.use(express.static('server/public'));
