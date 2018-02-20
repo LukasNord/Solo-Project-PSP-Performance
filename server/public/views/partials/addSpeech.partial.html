@@ -13,8 +13,8 @@
               <table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped" >
                 <thead>
                   <tr>
-                      <th>Date (Required)</th>
-                      <th>Topic</th>
+                      <th class="input-wide">Date (Required)</th>
+                      <th class="input-wide">Topic</th>
                       <th>Um</th>
                       <th>Uh</th>
                       <th>Ah</th>
@@ -31,7 +31,7 @@
               <tbody >
                   <tr>
                       <td>
-                        <input type="date" ng-model="vm.newSpeech.date"/>
+                        <input class="input-wide"type="date" ng-model="vm.newSpeech.date"/>
                       </td>                    
                       <td><input type="text" placeholder="topic..." ng-model="vm.newSpeech.topic"></td>
                       <td> <input type="number" min=0 placeholder="0" ng-model="vm.newSpeech.um"> </td>

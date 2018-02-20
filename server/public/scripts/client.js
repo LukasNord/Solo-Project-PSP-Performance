@@ -83,6 +83,15 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
         }
       }
     })
+    .when('/managePublicEvents',{
+      templateUrl: '/views/templates/managePublicEvents.html',
+      controller: 'EventsController as vm',
+      resolve: {
+        getuser : function(UserService){
+           return UserService.getAdmin()
+        }
+      }
+    })
     .otherwise({
       template: '<h1>404</h1>'
     });

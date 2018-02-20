@@ -103,8 +103,10 @@ li a:hover {
 }
 
 
-.body-background{
+.landing-container{
   background-image: url('/assets/test-background.jpeg');
+  height: 100vh;
+  
 } 
 
 .required-field{
@@ -121,8 +123,20 @@ li a:hover {
 }
 
 
+.table{
+  table-layout: fixed;
+}
 
-.event-table-width{
-  width: 100%;
+input{
+  max-width: 100%;
+}
+
+.display-event-date{
+  margin-left: 25px;
+  font-style: italic;
+}
+
+.input-wide{
+  width: 160px;
 
 }
