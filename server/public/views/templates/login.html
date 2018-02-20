@@ -1,0 +1,47 @@
+<!-- <div class="container">
+  <h1 class="lead">Login</h1>
+    <h1 class="lead alert alert-danger" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
+    <form ng-submit="vm.login()">
+      <div>
+          <label for="username">Username:</label>
+          <input type="text" ng-model="vm.user.username" />
+      </div>
+      <div>
+          <label for="password">Password:</label>
+          <input type="password" ng-model="vm.user.password" />
+      </div>
+      <div>
+          <md-button class="md-primary md raised" type="submit" name="submit" value="Log In">Log In</md-button>
+          <a href="#!register">Register</a>
+      </div>
+    </form>
+</div> -->
+
+
+<h1 class="register-h1">Login</h1>
+
+<div layout="column" layout-padding ng-cloak>
+    <p>Username is case-sensitive</p>
+    <h1 class="lead alert alert-danger" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
+  <md-content class="md-no-momentum register-view">
+    <form ng-submit="vm.registerUser()">
+      <md-input-container class="md-icon-float md-block">
+        <label>*Username</label>
+        <md-icon md-svg-src=""class="name"></md-icon>
+        <input ng-model="vm.user.username" type="text">
+        <md-icon md-svg-src=""class="name"></md-icon>
+      </md-input-container>
+      <md-input-container class="md-icon-float md-block">
+        <label>*Password</label>
+        <md-icon md-svg-src=""class="name"></md-icon>
+        <input ng-model="vm.user.password" type="password">
+        <md-icon md-svg-src=""class="name"></md-icon>
+      </md-input-container>
+    </form>
+      <div layout="row">
+          <md-button class="md-primary  md-raised" ng-click="vm.login()"> Login </md-button><span class="required-field" flex>*Required</span>
+          <md-button class="md-accent" href="#!landing"> Cancel </md-button>
+      </div>
+    </md-content>
+    
+</div>

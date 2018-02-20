@@ -3,29 +3,33 @@ myApp.service('SpeechService', ['$http', '$location', function($http, $location)
     self = this;
     self.speechArray = { List: [] };
 
+
+     /**GET All User Speeches **/
+     self.getUserSpeeches = function(){
+        let promise = $http.get('/api/speech/getUserSpeeches')
+                        .then(function(response){
+                            //self.speechArray.list = response.data;
+                            return response.data;
+                        }).catch((err)=>{
+                            console.log('error getting user speeches: ', err);
+                            
+                        });
+        return promise;
+    }// end getUserSpeeches
+
     /**POST speech to database **/
     self.addSpeech = function(newSpeech){
-        
-        $http.post('/api/speech/addSpeech', newSpeech)
-        .then( function(response){
-            console.log('speech added');
-            self.getUserSpeeches();
-        })
-        .catch((err)=> {
-            console.log('error posting: ', err);
-        });
+        let promise = $http.post('/api/speech/addSpeech', newSpeech)
+                        .then( function(response){
+                            console.log('speech added');
+                            return true;
+                        })
+                        .catch((err)=> {
+                            console.log('error posting: ', err);
+                        });
+        return promise;
     }// end add speech
 
-    /**GET All User Speeches **/
-    self.getUserSpeeches = function(){
-        $http.get('/api/speech/getUserSpeeches')
-        .then(function(response){
-            self.speechArray.list = response.data;
-        }).catch((err)=>{
-            console.log('error getting user speeches: ', err);
-            
-        });
-    }// end getUserSpeeches
 
     /** PUT Edit Speech in database **/
     self.editSpeech = function(editedSpeech){
@@ -43,15 +47,15 @@ myApp.service('SpeechService', ['$http', '$location', function($http, $location)
 
     /** Delete a Speech **/
     self.deleteSpeech = function(deletedSpeech){
-        $http.delete(`/api/speech/deleteSpeech/${deletedSpeech.id}`)
-        .then(function(response){
-            console.log('successfully deleted speech:', response);
-            // self.getUserSpeeches();
-        }).catch((err)=>{
-            console.log('failed to delete speech: ', err);   
-            
-        });
-        
+            $http.delete(`/api/speech/deleteSpeech/${deletedSpeech.id}`)
+                            .then(function(response){
+                                console.log('successfully deleted speech:', response);
+                                
+                            }).catch((err)=>{
+                                console.log('failed to delete speech: ', err);   
+                                
+                            });
+           
     }
 
 

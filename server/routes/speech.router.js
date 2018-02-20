@@ -17,7 +17,6 @@ var isAuthenticated = function (req, res, next) {
 
 /** Get All User Speeches**/
 router.get('/getUserSpeeches',isAuthenticated, (req,res)=>{
-    console.log('---> Hit GET USER SPEECHES');
     
     const getSpeechesQuery = `SELECT * FROM user_speeches WHERE user_speeches.user_id = $1`;
     pool.query(getSpeechesQuery, [req.user.id])
@@ -61,16 +60,12 @@ router.put('/editSpeech', isAuthenticated, (req,res,next)=>{
 }); // end Edit Speech
 
 
-
+/**  Delete Speech based on Id  **/
 router.delete('/deleteSpeech/:id', isAuthenticated, (req,res,next)=>{
 
-    console.log('req.params.id: ', req.params.id);
-    const deleteQuery = `DELETE FROM user_speeches WHERE id = $1;`
-    
+    const deleteQuery = `DELETE FROM user_speeches WHERE id = $1;` 
     pool.query(deleteQuery,[req.params.id])
         .then((result)=>{
-            console.log('item deleted: ', result);
-            
             res.sendStatus(202)
         }).catch((err)=>{
             console.log('failed to delete item: ', err);

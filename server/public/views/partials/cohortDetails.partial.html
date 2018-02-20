@@ -1,0 +1,8 @@
+<div ng-include="'views/partials/admin.nav.html'"></div> 
+<div layout="column">
+List of Students: 
+<li ng-repeat="student in vm.singleCohort.list">
+    {{student.username}}
+</li>
+<a href="#!manageCohorts"> Go Back</a>
+</div>

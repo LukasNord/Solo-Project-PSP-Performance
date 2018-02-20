@@ -1,12 +1,9 @@
-myApp.controller('ReportsController', ['UserService','ReportsService', function(UserService, ReportsService){
-    console.log('reports controller loaded');
+myApp.controller('AdminReportsController', ['UserService','ReportsService', function(UserService, ReportsService){
+    console.log('Admin Reports controller loaded');
     self = this;
     self.userService = UserService;
     self.userObject = UserService.userObject;
     self.reportResults = ReportsService.reportResults;
-
-
-
 
     /*** Line Chart ***/
     self.type = 'chart';
@@ -39,7 +36,8 @@ myApp.controller('ReportsController', ['UserService','ReportsService', function(
         }
     };
     /** Parse Response Data into Line chart data arrays **/
-    ReportsService.getReportData().then(function(response){
+    ReportsService.getAdminReportData().then(function(response){
+        console.log('getting admin reports');
         
         self.reportResults.list = response;
         self.labels = response[0];
@@ -159,7 +157,7 @@ myApp.controller('ReportsController', ['UserService','ReportsService', function(
 /** Pie Chart **/
 //The Pie chart will look better with averages over time.
 self.pieLabels = ["Um","Uh","Ah","So","Like","And","But","Double Clutch","False Start","You Know", "Other"];
-self.pieData = [300, 500, 100];
+self.pieData = [];
 self.pieOptions = {
     legend: {
         display: true,
@@ -171,15 +169,11 @@ self.pieOptions = {
         fontSize: 36,
         fontColor: '#000000',
         text: 'Average Word Usage'
-
     }
-
 };
-
 
 //takes in an array and returns the average
 self.calculateAverages = function(array){
-    
     
     let sum = 0;
     for(let i=0;i<array.length;i++){
@@ -187,8 +181,6 @@ self.calculateAverages = function(array){
     }
     let average = sum / array.length;
     let fixedValue = average.toFixed(2);
-   
-    
      return fixedValue;
 }
 

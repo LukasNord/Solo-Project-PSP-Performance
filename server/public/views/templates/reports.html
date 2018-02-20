@@ -1,14 +1,15 @@
 <div ng-include="'views/partials/user.nav.html'"></div>
 <div class="container">
-  <p>
-    In Reports
-  </p>
-  <button ng-click="vm.toggle()">Toggle Pie</button>
-
-  <canvas id="line" class="chart chart-line"  chart-type="vm.type" chart-data="vm.data"
+  
+  <canvas id="line" class="chart chart-line" chart-colors="vm.colors" legend="true" chart-type="vm.type" chart-data="vm.data"
   chart-labels="vm.labels" chart-series="vm.series" chart-options="vm.options"
   chart-dataset-override="vm.datasetOverride" chart-click="vm.onClick()">
   </canvas>
-
+<span class="chart-span"></span>
+<div class="pie-container">
+  <canvas id="pie" class="chart chart-pie"
+  chart-data="vm.pieData" chart-labels="vm.pieLabels" chart-options="vm.pieOptions" chart-colors="vm.colors">
+  </canvas> 
+</div>
   
 </div>

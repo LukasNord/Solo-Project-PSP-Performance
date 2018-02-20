@@ -48,11 +48,6 @@ body, html {
   margin-left: 10px;
 }
 
-.navbar {
-  background-color: #333333;
-  width: 100%;
-  border-radius: 0px;
-}
 
 ul {
   list-style-type: none;
@@ -79,19 +74,48 @@ li a:hover {
   color: #eee;
 }
 
-
-
-/*Date Picker */
-.full button span {
-  background-color: limegreen;
-  border-radius: 32px;
-  color: black;
-}
-.partially button span {
-  background-color: orange;
-  border-radius: 32px;
-  color: black;
+.row-center {
+    text-align: center;
+    font-size: 64px;
 }
 
 
 
+.pie-container{
+  
+  margin-top: 100px;
+}
+
+
+
+.register-btn{
+  display: center;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.register-view{
+  display: center;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+
+.body-background{
+  background-image: url('/assets/test-background.jpeg');
+} 
+
+.required-field{
+  text-align: center;
+}
+
+.register-h1{
+
+  text-align: center;
+}
+
+.cohort-table{
+  width: 50%;
+}

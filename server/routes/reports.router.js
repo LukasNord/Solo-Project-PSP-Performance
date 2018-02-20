@@ -33,19 +33,30 @@ router.get('/getReports', isAuthenticated,(req,res)=>{
             
         });
 
-
-
-
-
-
-
-
-
-
 }); // end get Reports
 
 
 
+          //*** Admin Reports  ***//
+
+router.get('/getAdminReports', isAuthenticated,(req,res)=>{
+    
+  const getReportQuery = `SELECT * FROM user_speeches ORDER BY date ASC`;
+          
+  pool.query(getReportQuery)
+      .then((result)=>{
+        // let arraySortResult = arraySort(result.rows);
+          console.log('----> ADMIN REPORTS: ', result.rows);
+          
+        
+        //res.send(result.rows);
+         
+      }).catch((err)=>{
+          console.log('error getting reports: ', err);
+          
+      });
+
+}); // end get Reports
 
 
 
