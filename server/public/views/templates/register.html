@@ -33,10 +33,14 @@
         <input ng-model="vm.user.password" type="text">
       </md-input-container>
     </form>
-    <div>
-        <select ng-model="vm.user.cohort">
-        <option ng-repeat ="cohort in vm.cohorts.list track by $index" value="{{cohort.id}}">{{cohort.cohort_name}}</option>
-    </select>
+    <div layout="row">
+      <span flex></span>
+      
+      <select ng-model="vm.user.cohort">
+          <option value="">-- Please Choose Your Cohort --</option>
+          <option ng-repeat ="cohort in vm.cohorts.list track by $index" value="{{cohort.id}}">{{cohort.cohort_name}}</option>
+      </select>
+      <span flex></span>
     </div>
     <div layout="row">
         <md-button class="md-primary  md-raised" ng-click="vm.registerUser()"> Register </md-button><span class="required-field" flex>*Required</span>

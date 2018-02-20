@@ -31,8 +31,6 @@ myApp.service('UserService', ['$http', '$location', function($http, $location){
     $http.get('/api/user').then(function(response) {
       if(response.data.user_type == 1) {
           // user has a current session on the server
-          console.log('getAdmin service: ', response.data.user_type);
-          
           self.userObject.user_type = response.data.user_type;
       } else {
           console.log('UserService -- getadmin -- failure');

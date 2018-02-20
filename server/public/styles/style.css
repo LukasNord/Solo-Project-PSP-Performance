@@ -103,9 +103,8 @@ li a:hover {
 }
 
 
-.landing-container{
+.body-background{
   background-image: url('/assets/test-background.jpeg');
-
 } 
 
 .required-field{
@@ -115,4 +114,8 @@ li a:hover {
 .register-h1{
 
   text-align: center;
+}
+
+.cohort-table{
+  width: 50%;
 }

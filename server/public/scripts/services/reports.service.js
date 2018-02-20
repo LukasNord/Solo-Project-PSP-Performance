@@ -20,7 +20,22 @@ myApp.service('ReportsService', ['$http', '$location', function($http, $location
 
     
     
+    self.getAdminReportData = function(){
+        console.log('admin Reports Service hit');
+        let promise = $http.get('/api/reports/getAdminReports')
+                        .then((response)=>{
+                            console.log('response.data from API call: ', response);           
+                            return response; 
+                        }).catch((err)=>{
+                            console.log('error on reports API request', err);
+                        });
+        return promise;
 
+
+
+
+
+    }
     
 
 

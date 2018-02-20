@@ -56,6 +56,24 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
         }
       }
     })
+    .when('/manageSingleCohort/:id',{
+      templateUrl: '/views/partials/cohortDetails.partial.html',
+      controller: 'adminDashboardController as vm',
+      resolve: {
+        getuser : function(UserService){
+           return UserService.getAdmin()
+        }
+      }
+    })
+    .when('/adminReports',{
+      templateUrl: '/views/templates/adminReports.html',
+      controller: 'AdminReportsController as vm',
+      resolve: {
+        getuser : function(UserService){
+           return UserService.getAdmin()
+        }
+      }
+    })
     .otherwise({
       template: '<h1>404</h1>'
     });

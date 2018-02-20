@@ -19,8 +19,9 @@
 
 
 <h1 class="register-h1">Login</h1>
+
 <div layout="column" layout-padding ng-cloak>
-    
+    <p>Username is case-sensitive</p>
     <h1 class="lead alert alert-danger" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
   <md-content class="md-no-momentum register-view">
     <form ng-submit="vm.registerUser()">
