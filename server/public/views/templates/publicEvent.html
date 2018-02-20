@@ -1,10 +1,10 @@
-
-    <div class="col-md-12">
-        <div layout="row">
-            <h2>Public Event</h2> <span flex="15"></span>  <p>To add a student to the table select the cohort and pick a student from the drop down menu.</p> <span flex></span> <h2> Date: </h2> <h2 class="display-event-date" ng-model="vm.publicEventDate"> {{vm.publicEventDate | date}}</h2>
-        </div>
-        <div class="row">
-       <span flex="25"></span>
+<div ng-include="'views/partials/user.nav.html'"></div>
+<div class="col-md-12">
+    <div layout="row">
+        <h2>Public Event</h2> <span flex="15"></span>  <p>To add a student to the table select the cohort and pick a student from the drop down menu.</p> <span flex></span> <h2> Date: </h2> <h2 class="display-event-date" ng-model="vm.publicEventDate"> {{vm.publicEventDate | date}}</h2>
+    </div>
+    <div class="row">
+        <span flex="25"></span>
         <select ng-options="cohort.cohort_name for cohort in vm.cohorts.list track by cohort.id" ng-model="selectedCohort" ng-change="vm.cohortSelected(selectedCohort.id)">
             <option value="">-- Pick Cohort --</option>
         </select> 
@@ -14,7 +14,7 @@
         <md-button class="md-primary md-raised" ng-click="vm.addPersonToTable(selectedStudent,selectedCohort.cohort_name)">+ Add Person</md-button>
         <span flex ></span>
         <md-button class="md-warn md-raised" ng-click="vm.leavePublicEventView()">Finished Tracking For Today</md-button>
-        </div>
+    </div>
         <table ng-table="vm.tableParams" class="table table-bordered table-striped event-table-width" >
             <tr ng-repeat="person in vm.publicEventParticipants track by $index">
             <td data-title="'Cohort'"> 
@@ -37,7 +37,7 @@
             <td data-title="'Saved?'"layout="center center"><md-button class="md-accent md-raised event-button" ng-if="!person.saved"ng-click="vm.savePublicEventSpeech(person, vm.publicEventDate)">Save</md-button><p ng-if="person.saved">Saved!</p></td>
             </tr>
         </table>
-        
-    </div>
+    
+</div>
 
        
