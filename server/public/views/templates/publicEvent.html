@@ -1,0 +1,36 @@
+
+    <div class="col-md-12">
+            <div class="row">
+            <h3>Public Event</h3><label>Select Cohort:</label> <select ng-options="cohort.cohort_name for cohort in vm.cohorts.list track by cohort.id" ng-model="selectedCohort" ng-change="vm.cohortSelected(selectedCohort.id)">
+                    <option value="">-- Pick Cohort --</option>
+                </select> <select ng-options="student.username for student in vm.students.list track by student.id" ng-model="selectedStudent" >
+                        <option value="">-- Please Choose A Student --</option>
+                    </select>  <md-button  class="md-primary md-raised" ng-click="vm.addPersonToTable(selectedStudent,selectedCohort.cohort_name)">+ Add Person</md-button>
+            <label>Date: </label> <p ng-model="vm.publicEventDate"> {{vm.publicEventDate}}</p>
+            </div>
+            <table ng-table="vm.tableParams" class="table table-bordered table-striped event-table-width" >
+                <tr ng-repeat="person in vm.publicEventParticipants track by $index">
+                <td data-title="'Cohort'"> 
+                    {{person.cohortName}}
+                </td>
+                <td data-title="'Student Name'">
+                    {{person.name}}
+                </td>
+                <td data-title="'Um'">{{person.um}}</td>
+                <td data-title="'Uh'">{{person.uh}}</td>
+                <td data-title="'Ah'">{{person.ah}}</td>
+                <td data-title="'So'">{{person.so}}</td>
+                <td data-title="'Like'">{{person.like}}</td>
+                <td data-title="'And'">{{person.and}}</td>
+                <td data-title="'But'">{{person.but}}</td>
+                <td data-title="'Double Clutch'">{{person.double_clutch}}</td>
+                <td data-title="'False Start'">{{person.false_start}}</td>
+                <td data-title="'You Know'">{{person.you_know}}</td>
+                <td data-title="'Other'">{{person.other}}</td>
+                <td><md-button class="md-accent md-raised" ng-click="vm.savePublicEventSpeech(person, vm.publicEventDate)">Save</md-button></td>
+                </tr>
+            </table>
+            
+        </div>
+
+       

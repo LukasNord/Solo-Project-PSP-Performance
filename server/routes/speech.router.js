@@ -76,7 +76,20 @@ router.delete('/deleteSpeech/:id', isAuthenticated, (req,res,next)=>{
 
 
 
-
+/** Add User Speech to Database via Public Event */
+router.post('/addSpeech/publicEvent', isAuthenticated, (req, res, next) => {
+    var saveSpeech = req.body;
+    // Place holder for later stretch feature.
+    saveSpeech.role = 3; 
+    const addSpeechQuery = 'INSERT INTO user_speeches (user_id, date, topic, role, ah, uh, likes, so, but, ands, um, you_know, double_clutch, false_start, other, comment) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)';
+    pool.query(addSpeechQuery, [req.body.user_id, saveSpeech.date, saveSpeech.topic,saveSpeech.role, saveSpeech.ah, saveSpeech.uh, saveSpeech.like, saveSpeech.so, saveSpeech.but, saveSpeech.and, saveSpeech.um, saveSpeech.you_know, saveSpeech.double_clutch, saveSpeech.false_start, saveSpeech.other, saveSpeech.comment])
+            .then((result) =>{
+                res.sendStatus(201);
+            }).catch((err)=> {
+                console.log('error making saveSpeech query: ', err);
+                res.sendStatus(500);
+            }); 
+});//end post
 
 
 

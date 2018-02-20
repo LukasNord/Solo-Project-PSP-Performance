@@ -18,6 +18,7 @@ var isAuthenticated = function (req, res, next) {
 
 // get cohort list for display // 
 router.get('/',(req,res)=>{
+    console.log('hit get COHORTS on Server');
     
     const getCohortsQuery = `SELECT * FROM cohorts ORDER BY cohort_name ASC`;
             
