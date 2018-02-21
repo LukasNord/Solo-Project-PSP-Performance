@@ -6,8 +6,9 @@ body, html {
 }
 
 .instructions .container h1 {
-  font-size: 32px;
+  font-size: 12px;
   font-weight: 600;
+  
 }
 
 .instructions {
@@ -104,9 +105,10 @@ li a:hover {
 
 
 .landing-container{
-  background-image: url('/assets/test-background.jpeg');
+  background:  url('../assets/giphy.gif') no-repeat center center fixed; 
+  background-size: cover;
   height: 100vh;
-  
+  z-index: 1;
 } 
 
 .required-field{
@@ -138,5 +140,42 @@ input{
 
 .input-wide{
   width: 160px;
+  margin-right: 5px;
+  
+  
+}
+
+.event-input-container{
+  margin-bottom: 15px;
+  height: 45px;
+}
+
+.input-x-wide{
+  
+  width: 300px;
+  margin-right: 5px;
+}
+.event-topic{
+  margin-left: 15px;
+  
+}
+
+.save-button-override{
+  display: block;
+  margin-right: 150px;
+  text-align: right;
+
 
 }
+
+.reports-welcome{
+  text-align: center;
+  font-size: 36px;
+}
+
+.in-app-header{
+  height: auto;
+  text-align: left;
+  font-size: 24px;
+}
+

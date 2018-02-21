@@ -1,4 +1,6 @@
+<header ng-include="'/views/partials/header.html'"></header>
 <div ng-include="'views/partials/user.nav.html'"></div>
+<h1 id="welcome" class="lead reports-welcome">Welcome, {{vm.userObject.userName}}!</h1>
 <div class="container">
   
   <canvas id="line" class="chart chart-line" chart-colors="vm.colors" legend="true" chart-type="vm.type" chart-data="vm.data"

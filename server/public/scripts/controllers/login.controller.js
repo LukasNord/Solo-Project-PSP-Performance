@@ -41,15 +41,15 @@ myApp.controller('LoginController', ['$http', '$location', 'UserService','Cohort
 /* Register User Logic */ //Move to Service eventually.
     self.registerUser = function () {
       if (self.user.username === '' || self.user.password === '' || self.user.cohort === '') {
-        self.message = "Choose a username and password!";
+        self.message = "Please choose a username, password, and cohort.";
       } else {
-        console.log('sending to server...', self.user);
+        
         $http.post('/api/user/register', self.user).then(function (response) {
-          
+          window.alert('Thanks for registering! You can now log in.')
           $location.path('/login');
         },
           function (response) {
-            console.log('duplicate username in database');
+            
             console.log('response: ', response.status);
             if( response.status === 409){
               self.message = "This Username is already taken, please try another one."

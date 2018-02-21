@@ -8,7 +8,7 @@ myApp.controller('EventsController', ['UserService','NgTableParams','$mdDialog',
     self.publicEventParticipants = [];
     self.students = [];
     self.publicEventDate = new Date();
-    
+    self.eventTopic = '';
     class Person{
 
         constructor(person, cohortName){
@@ -71,10 +71,13 @@ myApp.controller('EventsController', ['UserService','NgTableParams','$mdDialog',
     }
 
     
-    self.savePublicEventSpeech = function(person, date){
+    self.savePublicEventSpeech = function(person, date,topic){
         person.saved = true;
         let newSpeech = person;
         newSpeech.date = date;
+        newSpeech.topic = topic;
+        console.log('newSpeech.topic', topic);
+        
        
          SpeechService.addPublicEventSpeech(newSpeech).then((response)=>{
             console.log('added speech via public event successfully!');
