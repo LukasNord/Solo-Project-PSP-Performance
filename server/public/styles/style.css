@@ -108,7 +108,7 @@ li a:hover {
   background:  url('../assets/giphy.gif') no-repeat center center fixed; 
   background-size: cover;
   height: 100vh;
-  z-index: 1;
+  padding: 0;
 } 
 
 .required-field{
