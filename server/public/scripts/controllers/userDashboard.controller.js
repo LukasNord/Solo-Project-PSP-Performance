@@ -146,4 +146,10 @@ myApp.controller('UserDashboardController', ['UserService','NgTableParams','$mdD
 
     
 
+// table params
+
+
+
+
+
 }]);
