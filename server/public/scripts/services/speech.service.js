@@ -62,6 +62,8 @@ myApp.service('SpeechService', ['$http', '$location', function($http, $location)
 
 /**POST speech to database **/
 self.addPublicEventSpeech = function(newSpeech){
+    console.log('newSpeech Public EVENT inside POST: ', newSpeech);
+    
     return $http.post('/api/speech/addSpeech/publicEvent', newSpeech)
                     .then( function(response){
                         console.log('speech added');

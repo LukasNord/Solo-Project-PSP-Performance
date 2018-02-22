@@ -1,9 +1,13 @@
 <header ng-include="'/views/partials/header.html'"></header>
 <div ng-include="'views/partials/admin.nav.html'"></div> 
-<div layout="column">
-List of Students: 
-<li ng-repeat="student in vm.singleCohort.list">
-    {{student.username}}
-</li>
-<a href="#!manageCohorts"> Go Back</a>
+<div layout="row center center">
+
+<span flex></span>
+<table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped student-table" flex=25  >
+    <tr ng-repeat="student in vm.singleCohort.list">
+        <td data-title="'Student Name'" class ="data-center">{{student.username}}</td>
+        
+    </tr>
+</table>
+<span flex></span>
 </div>
