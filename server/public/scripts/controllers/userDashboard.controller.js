@@ -7,6 +7,7 @@ myApp.controller('UserDashboardController', ['UserService','NgTableParams','$mdD
   
  /** Get Speeches  to display to DOM**/
   SpeechService.getUserSpeeches().then(function(response){
+      
       self.userSpeeches.list = response;
   });
   /** Edit Speech Modal **/

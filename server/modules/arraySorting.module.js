@@ -19,18 +19,19 @@ function arraySort(arrayIn){
     let otherArray = [];
 
     for(let i = 0; i<arrayIn.length; i++){
-        dateArray.push(moment(arrayIn[i].date).format("MMM, Do YYYY"))
-        umArray.push(arrayIn[i].um)
-        uhArray.push(arrayIn[i].uh)
-        ahArray.push(arrayIn[i].ah)
-        soArray.push(arrayIn[i].so)
-        likeArray.push(arrayIn[i].likes)
-        andArray.push(arrayIn[i].ands)
-        butArray.push(arrayIn[i].but)
-        doubleClutchArray.push(arrayIn[i].double_clutch)
-        falseStartArray.push(arrayIn[i].false_start)
-        youKnowArray.push(arrayIn[i].you_know)
-        otherArray.push(arrayIn[i].other)
+        dateArray.push(moment(arrayIn[i].date).format("MMM, Do YYYY"));
+        
+        umArray.push(arrayIn[i].um);
+        uhArray.push(arrayIn[i].uh);
+        ahArray.push(arrayIn[i].ah);
+        soArray.push(arrayIn[i].so);
+        likeArray.push(arrayIn[i].likes);
+        andArray.push(arrayIn[i].ands);
+        butArray.push(arrayIn[i].but);
+        doubleClutchArray.push(arrayIn[i].double_clutch);
+        falseStartArray.push(arrayIn[i].false_start);
+        youKnowArray.push(arrayIn[i].you_know);
+        otherArray.push(arrayIn[i].other);
     }
 
     finalizedArray.push(dateArray);

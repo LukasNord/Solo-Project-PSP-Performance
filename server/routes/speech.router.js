@@ -30,6 +30,8 @@ router.get('/getUserSpeeches',isAuthenticated, (req,res)=>{
 /** Add User Speech to Database. Return Speech ID and use it to add comment to database. */
 router.post('/addSpeech', isAuthenticated, (req, res, next) => {
     var saveSpeech = req.body;
+    console.log('ADD SPEECH USER VIEW----- DATE: ', saveSpeech.date);
+    
     // Place holder for later stretch feature.
     saveSpeech.role = 3; 
     const addSpeechQuery = 'INSERT INTO user_speeches (user_id, date, topic, role, ah, uh, likes, so, but, ands, um, you_know, double_clutch, false_start, other, comment) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)';
@@ -79,6 +81,8 @@ router.delete('/deleteSpeech/:id', isAuthenticated, (req,res,next)=>{
 /** Add User Speech to Database via Public Event */
 router.post('/addSpeech/publicEvent', isAuthenticated, (req, res, next) => {
     var saveSpeech = req.body;
+    console.log('SPEECH DATE BEFORE DATA BASE PUBLIC EVENT: ', saveSpeech.date);
+    
     // Place holder for later stretch feature.
     saveSpeech.role = 3; 
     const addSpeechQuery = 'INSERT INTO user_speeches (user_id, date, topic, role, ah, uh, likes, so, but, ands, um, you_know, double_clutch, false_start, other, comment) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)';
