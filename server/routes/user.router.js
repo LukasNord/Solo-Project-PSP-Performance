@@ -28,17 +28,20 @@ router.post('/register', (req, res, next) => {
   var saveUser = {
     username: req.body.username,
     password: encryptLib.encryptPassword(req.body.password),
-    user_type: 2
+    user_type: 2,
+    cohort: req.body.cohort
   };
   console.log('new user:', saveUser);
-  pool.query('INSERT INTO users (username, password, user_type) VALUES ($1, $2, $3) RETURNING id',
-    [saveUser.username, saveUser.password, saveUser.user_type], (err, result) => {
+  pool.query('INSERT INTO users (username, password, user_type, cohort) VALUES ($1, $2, $3, $4) RETURNING id',
+    [saveUser.username, saveUser.password, saveUser.user_type, saveUser.cohort], (err, result) => {
       if (err) {
         console.log('error registering user: ', err);
         //most common error will be a 409- if it's not a 409 then the above log will help debug.
         res.sendStatus(409);
         
       } else {
+        
+        
         res.sendStatus(201);
       }
     });
@@ -49,8 +52,12 @@ router.post('/register', (req, res, next) => {
 // this middleware will run our POST if successful
 // this middleware will send a 404 if not successful
 router.post('/login', userStrategy.authenticate('local'), (req, res) => {
-  res.sendStatus(200);
+    console.log('req.body on login: ', req.body);
+    
+    res.send(req.user);
 });
+
+
 
 // clear all server session information about this user
 router.get('/logout', (req, res) => {

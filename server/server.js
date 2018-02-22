@@ -12,6 +12,8 @@ env.config();
 // Route includes
 const userRouter = require('./routes/user.router');
 const speechRouter = require('./routes/speech.router');
+const reportsRouter = require('./routes/reports.router');
+const cohortRouter = require('./routes/cohorts.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -27,11 +29,13 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/speech', speechRouter);
+app.use('/api/reports', reportsRouter);
+app.use('/api/cohort', cohortRouter);
 
 // Serve static files
 app.use(express.static('server/public'));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 9000;
 
 /** Listen * */
 app.listen(PORT, () => {

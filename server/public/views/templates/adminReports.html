@@ -1,0 +1,17 @@
+<header ng-include="'/views/partials/header.html'"></header>
+<div ng-include="'views/partials/admin.nav.html'"></div> 
+<div class="container">
+  <h3>Reports feature would go here...</h3>
+    <canvas id="line" class="chart chart-line" chart-colors="vm.colors" legend="true" chart-type="vm.type" chart-data="vm.data"
+        chart-labels="vm.labels" chart-series="vm.series" chart-options="vm.options"
+        chart-dataset-override="vm.datasetOverride" chart-click="vm.onClick()">
+    </canvas>
+    <span class="chart-span"></span>
+    <div class="pie-container">
+        <canvas id="pie" class="chart chart-pie"
+            chart-data="vm.pieData" chart-labels="vm.pieLabels" chart-options="vm.pieOptions" chart-colors="vm.colors">
+        </canvas> 
+    </div>
+
+</div>
+      

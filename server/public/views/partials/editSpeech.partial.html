@@ -1,0 +1,67 @@
+<md-dialog aria-label="Add Speech">
+        <form ng-cloak>
+          <md-toolbar>
+            <div class="md-toolbar-tools row">
+              <h2>Edit your speech</h2><span flex></span><md-button class="md-warn md-raised" ng-click="vm.deleteSpeech(vm.editSingleSpeech)">Delete Speech</md-button>
+              
+            </div>
+          </md-toolbar>
+          <md-dialog-content>
+            <div class="md-dialog-content">
+              <h2>Enter your Speech Statistics Here</h2> 
+              
+              <table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped" >
+                <thead>
+                  <tr>
+                      <th class="input-wide">Date (Required)</th>
+                      <th class="input-wide">Topic</th>
+                      <th>Um</th>
+                      <th>Uh</th>
+                      <th>Ah</th>
+                      <th>So</th>
+                      <th>Like</th>
+                      <th>And</th>
+                      <th>But</th>
+                      <th>Double Clutch</th>
+                      <th>False Start</th>
+                      <th>You Know</th>
+                      <th>Other</th>
+                  </tr>
+              </thead>
+              <tbody >
+                  <tr>
+                      <td class="input-wide">
+                        <input  type="date" ng-model="vm.editSingleSpeech.date"/>
+                      </td>                    
+                      <td><input type="text" placeholder="topic..." ng-model="vm.editSingleSpeech.topic" ></td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.editSingleSpeech.um"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.editSingleSpeech.uh"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.editSingleSpeech.ah"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.editSingleSpeech.so"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.editSingleSpeech.like"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.editSingleSpeech.and"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.editSingleSpeech.but"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.editSingleSpeech.double_clutch"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.editSingleSpeech.false_start"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.editSingleSpeech.you_know"> </td>
+                      <td> <input type="number" min=0 placeholder="0" ng-model="vm.editSingleSpeech.other"> </td>
+                    </tr>
+              </tbody>
+              </table>
+              <label>Comments:</label><br>
+              <div class="row"> 
+                <textarea ng-model="vm.editSingleSpeech.comment"  cols="75" rows="8"></textarea>
+              </div> 
+            </div>
+          </md-dialog-content>
+          
+          <md-dialog-actions layout="row">
+            <md-button class="md-warn raised" ng-click="vm.cancel()">
+                Cancel
+            </md-button>
+            <md-button ng-click="vm.answer(vm.editSingleSpeech)" class="md-primary raised">
+                Update
+            </md-button>
+          </md-dialog-actions>
+        </form>
+      </md-dialog>

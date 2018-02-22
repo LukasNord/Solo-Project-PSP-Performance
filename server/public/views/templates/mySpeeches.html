@@ -1,0 +1,22 @@
+<header ng-include="'/views/partials/header.html'"></header>
+<div ng-include="'views/partials/user.nav.html'"></div>
+
+<div class="container">
+    <h1 id="welcome" class="lead">Welcome, {{vm.userObject.userName}}!</h1>
+    
+    <div class="col-md-6">
+        <div class="row">
+        <h3>My Speeches</h3> <span flex></span> <md-button  class="md-primary md-raised" ng-click="vm.showAddSpeechModal()">+ Add Speech</md-button>
+        </div>
+        <table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped" >
+            <tr ng-repeat="speech in vm.userSpeeches.list">
+            <td data-title="'Date'">{{speech.date | date}}</td>
+            <td data-title="'Topic'" >{{speech.topic}}</td>
+            <td><md-button class="md-accent raised" ng-click="vm.editSpeech(speech)">Edit</md-button></td>
+            </tr>
+        </table>
+    </div>
+
+
+
+</div>

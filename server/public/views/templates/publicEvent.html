@@ -1,0 +1,53 @@
+<header ng-include="'/views/partials/header.html'"></header>
+<div ng-include="'views/partials/user.nav.html'"></div>
+<div class="col-md-12">
+    <div layout="row">
+        <h2>Public Event Counter</h2> <span flex="15"></span>  <p>To add a student to the table select the cohort and pick a student from the drop down menu.</p> <span flex></span> 
+    </div>
+    
+    <div class="row event-input-container">
+        <md-input-container class="event-topic" >
+            <label>Topic:</label>
+            <input type="text" ng-model="vm.eventTopic" >
+        </md-input-container>
+        <md-input-container class="event-topic" >
+            <label>Date:</label>
+            <input type="date" ng-model="publicEventDate" >
+        </md-input-container>
+        <span flex ></span>
+        <select class="input-wide" ng-options="cohort.cohort_name for cohort in vm.cohorts.list track by cohort.id" ng-model="selectedCohort" ng-change="vm.cohortSelected(selectedCohort.id)">
+            <option value="">-- Pick Cohort --</option>
+        </select> 
+        <select class="input-x-wide" ng-options="student.username for student in vm.students.list track by student.id" ng-model="selectedStudent" >
+            <option value="">-- Choose Student After Picking Cohort --</option>
+        </select>  
+        <md-button class="md-primary md-raised btn-align" ng-click="vm.addPersonToTable(selectedStudent,selectedCohort.cohort_name)">+ Add Person</md-button>
+        <span flex ></span>
+        <md-button class="md-accent md-raised" ng-click="vm.leavePublicEventView()">Finished Tracking For Today</md-button>
+    </div>
+        <table ng-table="vm.tableParams" class="table table-bordered table-striped event-table-width" >
+            <tr ng-repeat="person in vm.publicEventParticipants track by $index">
+            <td data-title="'Cohort'"> 
+                {{person.cohortName}}
+            </td>
+            <td data-title="'Student Name'">
+                {{person.name}}
+            </td>
+            <td data-title="'Um'"> <input type="number"min=0 ng-model ="person.um"></td>
+            <td data-title="'Uh'"><input type="number"min=0 ng-model ="person.uh"></td>
+            <td data-title="'Ah'"><input type="number"min=0 ng-model ="person.ah"></td>
+            <td data-title="'So'"><input type="number"min=0 ng-model ="person.so"></td>
+            <td data-title="'Like'"><input type="number"min=0 ng-model ="person.like"></td>
+            <td data-title="'And'"><input type="number"min=0 ng-model ="person.and"></td>
+            <td data-title="'But'"><input type="number"min=0 ng-model ="person.but"></td>
+            <td data-title="'Double Clutch'"><input type="number"min=0 ng-model ="person.double_clutch"></td>
+            <td data-title="'False Start'"><input type="number"min=0 ng-model ="person.false_start"></td>
+            <td data-title="'You Know'"><input type="number"min=0 ng-model ="person.you_know"></td>
+            <td data-title="'Other'"><input type="number"min=0 ng-model ="person.other"></td>
+            <td data-title="'Saved?'"layout="center center" ><md-button class="save-button-override"  ng-if="!person.saved"ng-click="vm.savePublicEventSpeech(person, publicEventDate, vm.eventTopic)"><md-icon class="fave-button" md-svg-icon="../assets/ic_save_black_36px.svg"></md-icon></md-button><p ng-if="person.saved"><md-icon class="fave-button check-mark" md-svg-icon="../assets/ic_done_black_24px.svg"></md-icon></p></td>
+            </tr>
+        </table>
+    
+</div>
+
+       

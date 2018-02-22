@@ -6,8 +6,9 @@ body, html {
 }
 
 .instructions .container h1 {
-  font-size: 32px;
+  font-size: 12px;
   font-weight: 600;
+  
 }
 
 .instructions {
@@ -48,11 +49,6 @@ body, html {
   margin-left: 10px;
 }
 
-.navbar {
-  background-color: #333333;
-  width: 100%;
-  border-radius: 0px;
-}
 
 ul {
   list-style-type: none;
@@ -79,16 +75,112 @@ li a:hover {
   color: #eee;
 }
 
-
-
-/*Date Picker */
-.full button span {
-  background-color: limegreen;
-  border-radius: 32px;
-  color: black;
+.row-center {
+    text-align: center;
+    font-size: 64px;
 }
-.partially button span {
-  background-color: orange;
-  border-radius: 32px;
-  color: black;
+
+
+
+.pie-container{
+  
+  margin-top: 100px;
+}
+
+
+
+.register-btn{
+  display: center;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.register-view{
+  display: center;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+
+.landing-container{
+  background:  url('../assets/giphy.gif') no-repeat center center fixed; 
+  background-size: cover;
+  height: 100vh;
+  padding: 0;
+} 
+
+.required-field{
+  text-align: center;
+}
+
+.register-h1{
+
+  text-align: center;
+}
+
+.cohort-table{
+  width: 50%;
+}
+
+
+.table{
+  table-layout: fixed;
+}
+
+input{
+  max-width: 100%;
+}
+
+.display-event-date{
+  margin-left: 25px;
+  font-style: italic;
+}
+
+.input-wide{
+  width: 160px;
+  margin-right: 5px;
+  
+  
+}
+
+.event-input-container{
+  margin-bottom: 15px;
+  height: 45px;
+}
+
+.input-x-wide{
+  
+  width: 300px;
+  margin-right: 5px;
+}
+.event-topic{
+  margin-left: 15px;
+  
+}
+
+.save-button-override{
+  display: block;
+  margin-right: 150px;
+  text-align: right;
+
+
+}
+
+.reports-welcome{
+  text-align: center;
+  font-size: 36px;
+}
+
+.in-app-header{
+  height: auto;
+  text-align: left;
+  font-size: 24px;
+}
+
+.date-label{
+  margin-right: 10px;
+  font-size: 18px;
+  text-align: bottom;
 }

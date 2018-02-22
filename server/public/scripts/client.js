@@ -1,14 +1,18 @@
-var myApp = angular.module('myApp', ['ngRoute','ngMaterial','ngTable']);
+var myApp = angular.module('myApp', ['ngRoute','ngMaterial','ngTable','chart.js','ngMdIcons']);
 
 /// Routes ///
-myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider, ) {
+myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   console.log('myApp -- config')
   $routeProvider
     .when('/', {
-      redirectTo: 'home'
+      redirectTo: 'landing'
     })
-    .when('/home', {
-      templateUrl: '/views/templates/home.html',
+    .when('/landing', {
+      templateUrl: '/views/templates/landing.html',
+      controller: 'LoginController as vm'
+    })
+    .when('/login', {
+      templateUrl: '/views/templates/login.html',
       controller: 'LoginController as vm',
     })
     .when('/register', {
@@ -16,20 +20,75 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
       controller: 'LoginController as vm'
     })
     .when('/user', {
-      templateUrl: '/views/templates/userDashboard.html',
-      controller: 'UserController as vm',
+      templateUrl: '/views/templates/mySpeeches.html',
+      controller: 'UserDashboardController as vm',
       resolve: {
         getuser : function(UserService){
           return UserService.getuser();
         }
       }
     })
-    .when('/info', {
-      templateUrl: '/views/templates/info.html',
-      controller: 'InfoController as vm',
+    .when('/reports', {
+      templateUrl: '/views/templates/reports.html',
+      controller: 'ReportsController as vm',
       resolve: {
         getuser : function(UserService){
           return UserService.getuser();
+        }
+      }
+    })
+    .when('/admin',{
+      templateUrl: '/views/templates/admin.html',
+      controller: 'adminDashboardController as vm',
+      resolve: {
+        getuser : function(UserService){
+           return UserService.getAdmin()
+
+        }
+      }
+    })
+    .when('/manageCohorts',{
+      templateUrl: '/views/templates/manageCohorts.html',
+      controller: 'adminDashboardController as vm',
+      resolve: {
+        getuser : function(UserService){
+           return UserService.getAdmin()
+        }
+      }
+    })
+    .when('/manageSingleCohort/:id',{
+      templateUrl: '/views/partials/cohortDetails.partial.html',
+      controller: 'adminDashboardController as vm',
+      resolve: {
+        getuser : function(UserService){
+           return UserService.getAdmin()
+        }
+      }
+    })
+    .when('/adminReports',{
+      templateUrl: '/views/templates/adminReports.html',
+      controller: 'AdminReportsController as vm',
+      resolve: {
+        getuser : function(UserService){
+           return UserService.getAdmin()
+        }
+      }
+    })
+    .when('/publicEvent', {
+      templateUrl: '/views/templates/publicEvent.html',
+      controller: 'EventsController as vm',
+      resolve: {
+        getuser : function(UserService){
+           return UserService.getuser()
+        }
+      }
+    })
+    .when('/managePublicEvents',{
+      templateUrl: '/views/templates/managePublicEvents.html',
+      controller: 'EventsController as vm',
+      resolve: {
+        getuser : function(UserService){
+           return UserService.getAdmin()
         }
       }
     })

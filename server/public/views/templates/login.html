@@ -1,0 +1,30 @@
+
+
+<header ng-include="'/views/partials/header.html'"></header>
+<h1 class="register-h1">Log In</h1>
+
+<div layout="column" layout-padding ng-cloak>
+    
+    <h1 class="lead alert alert-danger" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
+  <md-content class="md-no-momentum register-view z-depth-6">
+    <form ng-submit="vm.registerUser()">
+      <md-input-container class="md-icon-float md-block">
+        <label>*Username</label>
+        <md-icon md-svg-src=""class="name"></md-icon>
+        <input ng-model="vm.user.username" type="text">
+        <md-icon md-svg-src=""class="name"></md-icon>
+      </md-input-container>
+      <md-input-container class="md-icon-float md-block">
+        <label>*Password</label>
+        <md-icon md-svg-src=""class="name"></md-icon>
+        <input ng-model="vm.user.password" type="password">
+        <md-icon md-svg-src=""class="name"></md-icon>
+      </md-input-container>
+    </form>
+      <div layout="row">
+          <md-button class="md-primary  md-raised " ng-click="vm.login()"> Log In </md-button><span class="required-field" flex>*Required</span>
+          <md-button class="md-accent " href="#!landing"> Cancel </md-button>
+      </div>
+    </md-content>
+    
+</div>

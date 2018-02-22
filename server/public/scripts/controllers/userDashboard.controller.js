@@ -1,62 +1,126 @@
-myApp.controller('UserController', ['UserService','NgTableParams','$mdDialog','SpeechService', function(UserService, NgTableParams, $mdDialog, SpeechService ) {
+myApp.controller('UserDashboardController', ['UserService','NgTableParams','$mdDialog','SpeechService', function(UserService, NgTableParams, $mdDialog, SpeechService) {
   console.log('UserDashBoardController created');
   var self = this;
   self.userService = UserService;
   self.userObject = UserService.userObject;
   self.userSpeeches = SpeechService.speechArray;
   
+ /** Get Speeches  to display to DOM**/
+  SpeechService.getUserSpeeches().then(function(response){
+      
+      self.userSpeeches.list = response;
+  });
+  /** Edit Speech Modal **/
+  //Instantiate modal, Display on DOM, pass control to EditDialogController//
+  self.editSpeech = function(speechObject){
+    self.showEditSpeechModal = function (ev) {
+      $mdDialog.show({
+          controller: EditDialogController,
+          controllerAs: 'vm',
+          templateUrl: '../views/partials/editSpeech.partial.html',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose: false,
+          resolve: {
+            item: function () {
+              return speechObject;
+            }
+          }       
+        })
+        .then(function (answer) {
+          console.log('edit speech answer: ', answer);
+          SpeechService.editSpeech(answer);
+        }, function () {
+          self.status = 'You cancelled the dialog.';
+          console.log('exited modal via hide or cancel method');
+          SpeechService.getUserSpeeches().then(function(response){
+            self.userSpeeches.list = response;
+        });
+        });
+    };
 
-  
+  // EDIT MODAL CONTROLLER
+  function EditDialogController($mdDialog, item, SpeechService) {
+    const self = this;
+    self.editSingleSpeech = {};
 
-  self.getUserSpeeches = function(){
-    SpeechService.getUserSpeeches();
-  }
-  self.getUserSpeeches();
+    /** Delete Speech modal interaction**/
+    self.deleteSpeech = function(speech){
+      console.log('hit delete btn: ', speech);
+      var check = window.confirm('Are you sure you wish to delete this speech?');
+      if(check === true){
+        self.cancel();
+        SpeechService.deleteSpeech(speech);
+      } // end delete speech modal interaction
+    }
+    /** Format Date to allow calendar to display values from database **/
+    self.formatDate = function(dateString){
+      return new Date(dateString);
+    }
+    /** Copy properties of passed in speech object to modal controller speech object**/
+    self.editSingleSpeech = item;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /* Add Speech */
-  self.newSpeech = {};
-
-  self.addSpeech = function(newSpeech){
-    console.log('addspeech clicked');
+    /*fix the date string*/
+    self.editSingleSpeech.date = self.formatDate(self.editSingleSpeech.date);
     
-    SpeechService.addSpeech(newSpeech);
+    self.hide = function () {
+      $mdDialog.hide();
+    };
+    self.cancel = function () {
+      $mdDialog.cancel();
+      
+    };
+    self.answer = function (answer) {
+      console.log('edit speech answer', answer);
 
-  }
+      $mdDialog.hide(answer);
+    };
+  } // End EDIT DIALOG CONTROLLER
     
-/** Add Speech Modal **/
-  
+    //Open modal on click of Edit button//
+    self.showEditSpeechModal();
+  }// END Edit Speech Modal Control Logic
+
+  /**  Add Speech  Functionality **/
+  self.newSpeech = {};    
+  /** Add Speech Modal **/
+    
   self.showAddSpeechModal = function (ev) {
     $mdDialog.show({
-        controller: DialogController,
+        controller: addSpeechDialogController,
         controllerAs: 'vm',
         templateUrl: '../views/partials/addSpeech.partial.html',
         parent: angular.element(document.body),
         targetEvent: ev,
-        clickOutsideToClose: true
+        clickOutsideToClose: false
       })
       .then(function (answer) {
-        self.addSpeech(answer);
+        console.log('answer from submit button: ', answer);
+        SpeechService.addSpeech(answer).then(function(response){
+          SpeechService.getUserSpeeches().then(function(response){
+            self.userSpeeches.list = response;
+          });
+        });
       }, function () {
         self.status = 'You cancelled the dialog.';
       });
   };
 
-  function DialogController($mdDialog) {
+  function addSpeechDialogController($mdDialog) {
     const self = this;
+    self.newSpeech = {
+      um:0,
+      uh:0,
+      ah:0,
+      so:0,
+      like:0,
+      and:0,
+      but:0,
+      double_clutch: 0,
+      false_start: 0,
+      you_know: 0,
+      other: 0
+    };
     self.hide = function () {
       $mdDialog.hide();
     };
@@ -65,127 +129,25 @@ myApp.controller('UserController', ['UserService','NgTableParams','$mdDialog','S
       $mdDialog.cancel();
     };
 
-    self.answer = function (answer) {
-      console.log('answer', answer);
-
-      $mdDialog.hide(answer);
-    };
+    // self.answer = function (answer) {
+    //   console.log('answer: ', answer);
+    //     $mdDialog.hide(answer);
+    //   }
+    self.submitSpeech = function(speech){
+      if(!speech){
+        window.alert('please enter some data.')
+      }else if(speech.date == null ){
+        window.alert('Please add a date to continue.')
+      }else{
+        
+        $mdDialog.hide(speech);
+      }
+    }
+  };
 
     
 
-  //   /* Calendar Picker Pop up - work on this later*/
-  //   self.today = function() {
-  //     self.dt = new Date();
-  //   };
-  //   self.today();
-  
-  //   self.clear = function() {
-  //     self.dt = null;
-  //   };
-  
-  //   self.inlineOptions = {
-  //     customClass: getDayClass,
-  //     minDate: new Date(),
-  //     showWeeks: true
-  //   };
-  
-  //   self.dateOptions = {
-  //     dateDisabled: disabled,
-  //     formatYear: 'yy',
-  //     maxDate: new Date(2020, 5, 22),
-  //     minDate: new Date(),
-  //     startingDay: 1
-  //   };
-  
-  //   // Disable weekend selection
-  //   function disabled(data) {
-  //     var date = data.date,
-  //       mode = data.mode;
-  //     return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
-  //   }
-  
-  //   self.toggleMin = function() {
-  //     self.inlineOptions.minDate = self.inlineOptions.minDate ? null : new Date();
-  //     self.dateOptions.minDate = self.inlineOptions.minDate;
-  //   };
-  
-  //   self.toggleMin();
-  
-  //   self.open1 = function() {
-  //     self.popup1.opened = true;
-  //   };
-  
-  //   self.open2 = function() {
-  //     self.popup2.opened = true;
-  //   };
-  
-  //   self.setDate = function(year, month, day) {
-  //     self.dt = new Date(year, month, day);
-  //   };
-  
-  //   self.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-  //   self.format = self.formats[0];
-  //   self.altInputFormats = ['M!/d!/yyyy'];
-  
-  //   self.popup1 = {
-  //     opened: false
-  //   };
-  
-  //   self.popup2 = {
-  //     opened: false
-  //   };
-  
-  //   var tomorrow = new Date();
-  //   tomorrow.setDate(tomorrow.getDate() + 1);
-  //   var afterTomorrow = new Date();
-  //   afterTomorrow.setDate(tomorrow.getDate() + 1);
-  //   self.events = [
-  //     {
-  //       date: tomorrow,
-  //       status: 'full'
-  //     },
-  //     {
-  //       date: afterTomorrow,
-  //       status: 'partially'
-  //     }
-  //   ];
-  
-  //   function getDayClass(data) {
-  //     var date = data.date,
-  //       mode = data.mode;
-  //     if (mode === 'day') {
-  //       var dayToCheck = new Date(date).setHours(0,0,0,0);
-  
-  //       for (var i = 0; i < self.events.length; i++) {
-  //         var currentDay = new Date(self.events[i].date).setHours(0,0,0,0);
-  
-  //         if (dayToCheck === currentDay) {
-  //           return self.events[i].status;
-  //         }
-  //       }
-  //     }
-  
-  //     return '';
-  // }
-  // }
-
-
-
-
-  }
-
-
- /* Retrieve data from user database */
-
-  // var simpleList = [{date: "12-01-2018", topic: 'heroes'} /*,*/];
-  // self.tableParams = new NgTableParams({
-  //   page: 1,
-  //   count: 20,
-  //   sorting: {}
-  // }, { dataset: simpleList});
-
-
-
+// table params
 
 
 

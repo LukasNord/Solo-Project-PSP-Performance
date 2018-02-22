@@ -1,0 +1,16 @@
+<header  ng-include="'/views/partials/header.html'"></header>
+<div ng-include="'views/partials/admin.nav.html'"></div>
+<div layout="column">
+<h3>Manage Cohorts</h3>
+<p>Add Cohorts to the Application.  Cohorts displayed below will be availabe for users to register with.</p>
+<div layout="row">
+   <span flex></span> <input type="text" ng-model="vm.newCohort" placeholder="Cohort Name"/> <md-button class="md-primary md-raised cohort-btn" ng-click="vm.addCohort(vm.newCohort)"> + Add a Cohort</md-button>
+</div>
+    <table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped cohort-table" >
+        <tr ng-repeat="cohort in vm.cohorts.list">
+        <td data-title="'Cohort Name'">{{cohort.cohort_name}}</td>
+        <td><md-button class="md-accent raised" ng-click="vm.getSingleCohort(cohort.id)">Cohort Details</md-button></td>
+        </tr>
+    </table>
+
+</div>
