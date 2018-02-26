@@ -46,12 +46,25 @@ myApp.controller('UserDashboardController', ['UserService','NgTableParams','$mdD
 
     /** Delete Speech modal interaction**/
     self.deleteSpeech = function(speech){
-      console.log('hit delete btn: ', speech);
-      var check = window.confirm('Are you sure you wish to delete this speech?');
-      if(check === true){
-        self.cancel();
-        SpeechService.deleteSpeech(speech);
-      } // end delete speech modal interaction
+      swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this speech!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal("Your speech has been deleted!", {
+            icon: "success",
+          });
+          self.cancel();
+          SpeechService.deleteSpeech(speech);
+        } else {
+          swal("Your speech was NOT deleted!");
+        }
+      });
+      
     }
     /** Format Date to allow calendar to display values from database **/
     self.formatDate = function(dateString){

@@ -14,7 +14,7 @@ myApp.controller('ReportsController', ['UserService','ReportsService', function(
     self.series = ["Um","Uh","Ah","So","Like","And","But","Double Clutch","False Start","You Know", "Other"];
     self.data = [];
     
-    //  self.onClick = function (points, evt) {
+    self.onClick = function (points, evt){};
     
     self.datasetOverride = [{ yAxisID: 'y-axis-1'}];
     self.options = {

@@ -45,7 +45,11 @@ myApp.controller('LoginController', ['$http', '$location', 'UserService','Cohort
       } else {
         
         $http.post('/api/user/register', self.user).then(function (response) {
-          window.alert('Thanks for registering! You can now log in.')
+          swal({
+            title: "Welcome!",
+            text: "You can now Log In with your Username and Password!",
+            icon: "success",
+          });
           $location.path('/login');
         },
           function (response) {
