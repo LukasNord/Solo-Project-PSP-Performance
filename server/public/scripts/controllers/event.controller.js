@@ -1,4 +1,4 @@
-myApp.controller('EventsController', ['UserService','NgTableParams','$mdDialog','SpeechService','CohortService','$location', function(UserService, NgTableParams, $mdDialog, SpeechService, CohortService, $location) {
+myApp.controller('EventsController', ['UserService','NgTableParams','$mdDialog','SpeechService','CohortService','$location','$timeout', function(UserService, NgTableParams, $mdDialog, SpeechService, CohortService, $location, $timeout) {
     console.log('Event controller Loaded');
     
     var self = this;
@@ -96,13 +96,23 @@ myApp.controller('EventsController', ['UserService','NgTableParams','$mdDialog',
 
     self.leavePublicEventView = function(){
 
-        let confirm = window.confirm(`Did you save everyone's data? Leaving this page can result in data loss if you have not saved each user!`);
-        if(confirm == true){
-            $location.path('/user');
-        }else{
-            return false;
-        }
+        swal({
+            title: "Are you sure?",
+            text: "Have you saved all user data? If not, leaving this page will result in data loss.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                window.location.href = 'http://localhost:9000/#!/user';
+            }
+          });
 
+
+        
+
+        
     }
 
 
@@ -110,9 +120,7 @@ myApp.controller('EventsController', ['UserService','NgTableParams','$mdDialog',
 
 
 
-
-
-
+    
 
 
 
