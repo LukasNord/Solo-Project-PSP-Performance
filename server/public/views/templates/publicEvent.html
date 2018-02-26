@@ -2,7 +2,7 @@
 <div ng-include="'views/partials/user.nav.html'"></div>
 <div class="col-md-12">
     <div layout="row">
-        <h2>Public Event Counter</h2> <span flex="15"></span>  <p>To add a student to the table select the cohort and pick a student from the drop down menu.</p> <span flex></span> 
+        <h2>Public Event Counter Role</h2> <span flex="10"></span>  <p>To add a student to the table select the cohort and pick a student from the drop down menu.</p> <span flex></span> 
     </div>
     
     <div class="row event-input-container">
@@ -12,7 +12,7 @@
         </md-input-container>
         <md-input-container class="event-topic" >
             <label>Date:</label>
-            <input type="date" ng-model="publicEventDate" >
+            <input type="date" ng-model="publicEventDate" required >
         </md-input-container>
         <span flex ></span>
         <select class="input-wide" ng-options="cohort.cohort_name for cohort in vm.cohorts.list track by cohort.id" ng-model="selectedCohort" ng-change="vm.cohortSelected(selectedCohort.id)">

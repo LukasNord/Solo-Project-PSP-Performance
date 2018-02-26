@@ -92,7 +92,12 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
         }
       }
     })
+    .when('/tech',{
+      templateUrl: '/views/templates/tech.html',
+      controller: 'EventsController as vm' 
+    })
     .otherwise({
       template: '<h1>404</h1>'
     });
+
 }]);

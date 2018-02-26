@@ -164,8 +164,6 @@ input{
   display: block;
   margin-right: 150px;
   text-align: right;
-
-
 }
 
 .reports-welcome{
@@ -183,4 +181,11 @@ input{
   margin-right: 10px;
   font-size: 18px;
   text-align: bottom;
+}
+.landing-header{
+  font-size: 36px;
+
+}
+.tech-page-head{
+  text-align: center;
 }
