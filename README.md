@@ -1,34 +1,43 @@
 # Name of Project
-
-One Paragraph of project description goes here. Link to the live version of the app if it's hosted on Heroku.
+Public Speaking Performance Tracker
+Link to live site: https://pspperformancetracker.herokuapp.com
+I built this application to help my school track public speaking performance for students.  The application tracks individual user statistics and provides a visualization on how they're doing over time. 
 
 ## Built With
 
-List technologies and frameworks here
+HTML/CSS
+AngularJS
+Angular Material
+Chart.js
+Express.js
+Passport
+Node.js
+Moment.js
+PostgreSQL
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+If you're interested in working on this project locally, clone the Master branch and run NPM install.  You will need to have postgreSQL running on your computer and a connection to the database.  If you wish to change the database name you will need to update the pool.js module to reflect your naming convention.  Included in the files is a .sql file with the table structure.  At this time, you will have to manually run these SQL statements to build out the database structure.  Automation for this is a future feature.
 
 ### Prerequisites
 
-Link to software that is required to install the app (e.g. node).
+
 
 - [Node.js](https://nodejs.org/en/)
-- List other prerequisites here
+- PostgreSQL (https://www.postgresql.org/)
 
 
 ### Installing
 
 Steps to get the development environment running.
+1.) Clone the Master Branch locally.
+2.) Create a database called "VisualToast". If you want to name it differently you will need to modify the pool.js module to connect to your database. Set up the postgreSQL database according to the ToastVisual_postgres_create.sql file. (Execute these to build out the table).
+3.) Run NPM Install within the project.
+4.) Run NPM start.
+5.) Happy coding!
 
-```sql
-CREATE TABLE "users" (
-  "id" serial primary key,
-  "username" varchar(80) not null UNIQUE,
-  "password" varchar(240) not null
-);
-```
+
 
 ## Screen Shot
 
