@@ -9,6 +9,8 @@ I built this application to help my school track public speaking performance for
 
 HTML/CSS
 
+JavaScript
+
 AngularJS
 
 Angular Material
