@@ -8,13 +8,21 @@ I built this application to help my school track public speaking performance for
 ## Built With
 
 HTML/CSS
+
 AngularJS
+
 Angular Material
+
 Chart.js
+
 Express.js
+
 Passport
+
 Node.js
+
 Moment.js
+
 PostgreSQL
 
 ## Getting Started
