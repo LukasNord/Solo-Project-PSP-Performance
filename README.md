@@ -41,36 +41,28 @@ Steps to get the development environment running.
 
 
 
-## Screen Shot
 
-Include one or two screen shots of your project here (optional). Remove if unused.
 
-## Documentation
 
-Link to a read-only version of your scope document or other relevant documentation here (optional). Remove if unused.
 
-### Completed Features
 
-High level list of items completed.
 
-- [x] Feature a
-- [x] Feature b
 
 ### Next Steps
 
-Features that you would like to add at some point in the future.
+- [ ] Allow user password reset.
 
-- [ ] Feature c
+- [ ] Create Admin Reporting Module.
 
-## Deployment
+- [ ] Mobile responsive.
 
-Add additional notes about how to deploy this on a live system
+
 
 ## Authors
 
-* Name of author(s)
+* Lukas Nord
 
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
+* Thanks to the Chart.js team for a wonderful library!
