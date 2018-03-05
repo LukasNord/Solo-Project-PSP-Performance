@@ -64,6 +64,8 @@ Steps to get the development environment running.
 
 - [ ] Mobile responsive.
 
+- [ ] SQL script automation.
+
 
 
 ## Authors
@@ -74,3 +76,4 @@ Steps to get the development environment running.
 ## Acknowledgments
 
 * Thanks to the Chart.js team for a wonderful library!
+* Thanks to my instructors at Prime Digital Academy!
