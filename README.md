@@ -58,11 +58,13 @@ Steps to get the development environment running.
 
 ### Next Steps
 
+- [ ] Allow usernames to be non-case sensitive.
+
 - [ ] Allow user password reset.
 
 - [ ] Create Admin Reporting Module.
 
-- [ ] Mobile responsive.
+- [ ] Mobile responsive.  iPad view is the smallest ideal size for data entry.
 
 - [ ] SQL script automation.
 
